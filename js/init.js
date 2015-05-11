@@ -5,7 +5,7 @@ $(document).ready(function(){
   $("<canvas/>" ).attr({
     id: "main_canvas",width:$(document).innerWidth()+"px",height: $(document).innerHeight()+"px"
   }).css({
-    background: "#7ec0ee"
+    background: "#7ec0ee", margin: 0
   }).appendTo("#main_container");
   canvas = document.getElementById("main_canvas");
   context = canvas.getContext("2d");

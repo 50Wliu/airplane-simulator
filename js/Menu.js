@@ -12,21 +12,19 @@ Menu = function(title, items, y, size, width, callback)
 Menu.prototype.constructor = Menu;
 
 Menu.prototype.Render = function(elapsed){
-  if (this.backgroundCallback){
-    this.backgroundCallback(elapsed);
-  } else {
-    var lingrad = context.createLinearGradient(0,0,0,canvas.height);
-    lingrad.addColorStop(0, '#add8e6');
-    lingrad.addColorStop(1, '#259');
-    context.fillStyle = lingrad;
-    context.fillRect(0,0,canvas.width, canvas.height);
-  }
+  //Gradient look
+  var lingrad = context.createLinearGradient(0,0,0,canvas.height);
+  lingrad.addColorStop(0, '#add8e6');
+  lingrad.addColorStop(1, '#259');
+  context.fillStyle = lingrad;
+  context.fillRect(0,0,canvas.width, canvas.height);
 
   context.textAlign = "center";
   context.fillStyle = "White";
 
   var y = this.y;
   if (this.title){
+    //Blinking text looks cool :P
     var v = Math.floor(127*Math.cos(GameLoopManager.lastTime*0.04) + 127);
     context.fillStyle = "rgba(232,025,"+v.toString()+",225)";
     context.font = Math.floor(this.size*1.3).toString() + "px Arial";

@@ -13,6 +13,7 @@ $(document).ready(function(){
 });
 
 function StartMainMenu(){
+  //Creating a new Menu Object
   var MainMenu = new Menu("Air Fighers",
   [ "Play", "Settings"],
   200, 50, 200,

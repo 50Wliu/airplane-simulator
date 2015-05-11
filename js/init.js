@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 function StartMainMenu(){
   //Creating a new Menu Object
-  var MainMenu = new Menu("Air Fighers",
+  var MainMenu = new Menu("The Battle of Calculus Planes",
   [ "Play", "Settings"],
   200, 50, 200,
   function(numItem) { if (numItem == 0) StartGame(); });

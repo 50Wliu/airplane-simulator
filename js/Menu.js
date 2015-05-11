@@ -25,8 +25,8 @@ Menu.prototype.Render = function(elapsed){
   var y = this.y;
   if (this.title){
     //Blinking text looks cool :P
-    var v = Math.floor(127*Math.cos(GameLoopManager.lastTime*0.04) + 127);
-    context.fillStyle = "rgba(232,025,"+v.toString()+",225)";
+    //var v = Math.floor(127*Math.cos(GameLoopManager.lastTime*0.04) + 127);
+    context.fillStyle = "#ff0000";
     context.font = Math.floor(this.size*1.3).toString() + "px Arial";
     context.fillText(this.title, canvas.width/2, y);
     y += this.size;

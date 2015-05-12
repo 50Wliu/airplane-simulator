@@ -1,4 +1,27 @@
-body{
+/*body{
   margin: 0px;
   overflow:hidden;
+}*/
+
+#overlays
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: #ADD8E6;
+    z-index: 2;
+}
+
+#menu
+{
+    width: 350px;
+    background-color: #FFFFFF;
+    margin: 100px auto;
+    border-radius: 15px;
+    padding: 5px 15px 5px 15px;
+}
+
+.btn-play
+{
+    width: 86.285%;
 }

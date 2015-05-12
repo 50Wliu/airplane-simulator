@@ -21,11 +21,5 @@ function StartMainMenu(){
   GameLoopManager.run(function(elapsed) { MainMenu.Tick(elapsed);});
 
   document.addEventListener("mousedown", function(e){MainMenu.mouseDown(e)}, false);
-  
-}
 
-function test(){
-
-  var floatingManager = new FloatingObjectManager();
-  floatingManager.createObject("images/menu_airplane.png", 1);
 }

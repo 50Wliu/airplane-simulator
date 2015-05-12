@@ -8,18 +8,19 @@ Menu = function(title, items, y, size, width, callback)
   this.size = size;
   this.width = width;
   var floatingManager = new FloatingObjectManager();
-  floatingManager.createObject("Pics/menu_airplane.png", 1);
+  floatingManager.createObject("images/menu_airplane.png", 4);
+  floatingManager.move();
 }
 
 Menu.prototype.constructor = Menu;
 
-Menu.prototype.Render = function(elapsed){
+Menu.prototype.Render = function(){
   //Gradient look
   var lingrad = context.createLinearGradient(0,0,0,canvas.height);
   lingrad.addColorStop(0, '#add8e6');
   lingrad.addColorStop(1, '#259');
   context.fillStyle = lingrad;
-  context.fillRect(0,0,canvas.width, canvas.height);
+  //context.fillRect(0,0,canvas.width, canvas.height);
 
   context.textAlign = "center";
   context.fillStyle = "White";
@@ -42,10 +43,6 @@ Menu.prototype.Render = function(elapsed){
     y += this.size;
     context.fillText(this.items[i], canvas.width/2, y);
   }
-
-  var floatingManager = new FloatingObjectManager();
-  floatingManager.createObject("images/menu_airplane.png", 4);
-
 }
 
 Menu.prototype.mouseDown = function(e){
@@ -58,5 +55,5 @@ Menu.prototype.mouseDown = function(e){
 }
 
 Menu.prototype.Tick = function(elapsed){
-  this.Render(elapsed);
+  this.Render();
 }

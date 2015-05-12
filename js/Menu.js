@@ -7,6 +7,8 @@ Menu = function(title, items, y, size, width, callback)
   this.y = y;
   this.size = size;
   this.width = width;
+  var floatingManager = new FloatingObjectManager();
+  floatingManager.createObject("Pics/menu_airplane.png", 1);
 }
 
 Menu.prototype.constructor = Menu;
@@ -40,8 +42,7 @@ Menu.prototype.Render = function(elapsed){
     y += this.size;
     context.fillText(this.items[i], canvas.width/2, y);
   }
-  var floatingManager = new FloatingObjectManager();
-  floatingManager.createObject("Pics/menu_airplane.png", 4);
+
 }
 
 Menu.prototype.mouseDown = function(e){

@@ -9,5 +9,6 @@ function FloatingObject(source, x,y,scale){
 
 FloatingObject.prototype.draw = function(){
   var image = this.image;
+  console.log(image.width);
   context.drawImage(image, this.x,this.y,image.width*this.scale,image.height*this.scale);
 }

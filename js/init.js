@@ -18,6 +18,6 @@ function StartMainMenu(){
   [ "Play", "Settings"],
   200, 50, 200,
   function(numItem) { if (numItem == 0) StartGame(); });
-  GameLoopManager.run(function(elapsed) { MainMenu.Tick(elapsed); });
+  GameLoopManager.run(function(elapsed) { MainMenu.Tick(elapsed);});
   document.addEventListener("mousedown", function(e){MainMenu.mouseDown(e)}, false);
 }

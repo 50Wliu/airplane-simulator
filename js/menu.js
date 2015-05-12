@@ -42,7 +42,12 @@ Menu.prototype.Render = function(elapsed){
     y += this.size;
     context.fillText(this.items[i], canvas.width/2, y);
   }
+<<<<<<< HEAD:js/Menu.js
 
+=======
+  var floatingManager = new FloatingObjectManager();
+  floatingManager.createObject("images/menu_airplane.png", 4);
+>>>>>>> origin/gh-pages:js/menu.js
 }
 
 Menu.prototype.mouseDown = function(e){

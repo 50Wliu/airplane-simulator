@@ -1,0 +1,11 @@
+{
+	"name": "airplane-simulator",
+	"version": "0.0.0",
+	"main": "./js/init.js",
+	"dependencies":
+	{
+		"threejs": "*",
+		"octicons": "^2.2.2"
+	},
+	"private": true
+}

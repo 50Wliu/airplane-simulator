@@ -1,0 +1,29 @@
+{
+	"name": "airplane-simulator",
+	"productName": "The Battle of Calculus Planes",
+	"version": "0.0.0",
+	"description": "AP Calculus BC 2015 final project",
+	"main": "./js/init.js",
+	"repository":
+	{
+		"type": "git",
+		"url": "https://github.com/50Wliu/airplane-simulator.git"
+	},
+	"bugs":
+	{
+		"url": "https://github.com/50Wliu/airplane-simulator/issues"
+	},
+	"licenses":
+	[
+		{
+			"type": "MIT",
+			"url": "https://raw.githubusercontent.com/50Wliu/airplane-simulator/master/LICENSE.md"
+		}
+	],
+	"dependencies":
+	{
+		"bootstrap": "^3.3.4",
+		"jquery": "^2.1.4"
+	},
+	"private": true
+}

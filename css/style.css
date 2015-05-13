@@ -1,7 +1,7 @@
-/*body{
+body{
   margin: 0px;
   overflow:hidden;
-}*/
+}
 
 #overlays
 {
@@ -10,7 +10,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: #ADD8E6;
+    background-color: #00000000;
     z-index: 2;
 }
 

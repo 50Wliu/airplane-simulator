@@ -16,8 +16,8 @@ $(document).ready(function(){
 function StartMainMenu()
 {
 	//Creating a new Menu Object
-	var MainMenu = new Menu("The Battle of Calculus Planes",
-	[ "Play", "Settings"],
+	var MainMenu = new Menu("",
+	[],
 	200, 50, 200,
 	function(numItem)
 	{
@@ -28,5 +28,5 @@ function StartMainMenu()
 	});
 	GameLoopManager.run(function(){MainMenu.Tick();});
 
-	document.addEventListener("mousedown", function(e){MainMenu.mouseDown(e);}, false);
+	//document.addEventListener("mousedown", function(e){MainMenu.mouseDown(e);}, false);
 }

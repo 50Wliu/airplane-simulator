@@ -9,23 +9,23 @@
 
 		<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
 		<script src="js/JareUtils.js"></script>
 		<script src="js/init.js"></script>
 		<script src="js/menu.js"></script>
 		<script src="js/GameLoopManager.js"></script>
 		<script src="js/FloatingObject.js"></script>
-		<script src="js/FloatingObjectManager.js"></script>-->
+		<script src="js/FloatingObjectManager.js"></script>
 
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="vendor/octicons/octicons.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	</head>
 	<body>
-		<!-- <div id="main_container"></div> -->
+		<div id="main_container"></div>
 		<div id="overlays">
 			<div id="menu">
-				<form role="form">
+				<form role="form" onsubmit="alert('Pew!'); return false">
 					<div class="form-group">
 						<h3><center>The Battle of Calculus Planes</center></h2>
 					</div>
@@ -35,7 +35,7 @@
 					</div>
 
 					<div class="form-group">
-						<button type="submit" id="play" class="btn btn-play btn-primary" onclick="alert('Pew!');">Play</button>
+						<button type="submit" id="play" class="btn btn-play btn-primary">Play</button>
 						<button class="btn btn-info btn-settings" data-toggle="tooltip" data-placement="bottom" title="Settings" onclick="$('#settings').toggle(); return false;"><span class="octicon octicon-gear"></span></button>
 
 						<br clear="both" />

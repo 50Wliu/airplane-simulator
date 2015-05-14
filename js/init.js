@@ -26,7 +26,8 @@ function StartMainMenu()
 			StartGame();
 		}
 	});
-	var menu = buildHtml($.getJSON("json/welcome_menu.json"));
+
+	var menu = buildHtml($.getJSON("json/menu.json"));
 	$("body").append(menu);
 	//GameLoopManager.run(function(){MainMenu.Tick();});
 

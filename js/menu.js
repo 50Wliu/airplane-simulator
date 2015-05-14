@@ -15,7 +15,7 @@ var Menu = function(title, items, y, size, width, callback)
 
 Menu.prototype.constructor = Menu;
 
-Menu.prototype.Render = function()
+/*Menu.prototype.Render = function()
 {
 	//Gradient look
 	var lingrad = context.createLinearGradient(0, 0, 0, canvas. height);
@@ -60,7 +60,7 @@ Menu.prototype.mouseDown = function(e)
 	}
 };
 
-Menu.prototype.Tick = function()
+/*Menu.prototype.Tick = function()
 {
 	this.Render();
-};
+};*/

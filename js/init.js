@@ -6,7 +6,7 @@ $(document).ready(function(){
 	$("<canvas/>").attr({
 		id: "main_canvas", width:$(document).innerWidth()+"px", height: $(document).innerHeight()+"px"
 	}).css({
-		background: "#7ec0ee"
+		background: "#add8e6"
 	}).appendTo("#main_container");
 	canvas = document.getElementById("main_canvas");
 	context = canvas.getContext("2d");
@@ -26,7 +26,7 @@ function StartMainMenu()
 			StartGame();
 		}
 	});
-	GameLoopManager.run(function(){MainMenu.Tick();});
+	//GameLoopManager.run(function(){MainMenu.Tick();});
 
 	//document.addEventListener("mousedown", function(e){MainMenu.mouseDown(e);}, false);
 }

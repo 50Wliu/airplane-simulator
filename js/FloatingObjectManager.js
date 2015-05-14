@@ -9,7 +9,7 @@ FloatingObjectManager.prototype.createObject = function(source, amount)
 {
 	for(var i = 0; i < amount; i++)
 	{
-		this.objectArray.push(new FloatingObject(source, Math.random() * canvas.width, Math.random() * canvas.height, 0.3, Math.random() * 4 + 1));
+		this.objectArray.push(new FloatingObject(source, Math.round(Math.random() * canvas.width), Math.random() * canvas.height, 0.3, Math.round(Math.random() * 4 + 1)));
 	}
 };
 
@@ -20,7 +20,7 @@ FloatingObjectManager.prototype.move = function()
 	{
 		for(var i = 0; i < bindThis.objectArray.length; i++)
 		{
-			bindThis.objectArray[i].setCoords(bindThis.objectArray[i].x + bindThis.objectArray[i].speed, bindThis.objectArray[i].y, bindThis.objectArray[i].speed);
+			bindThis.objectArray[i].setCoords(bindThis.objectArray[i].x, bindThis.objectArray[i].y, bindThis.objectArray[i].speed);
 			bindThis.objectArray[i].draw();
 		}
 	}, 1000 / 30);

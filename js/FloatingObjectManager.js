@@ -9,7 +9,7 @@ FloatingObjectManager.prototype.createObject = function(source, amount)
 {
 	for(var i = 0; i < amount; i++)
 	{
-		this.objectArray.push(new FloatingObject(source, Math.round(Math.random()*canvas.width), Math.round(Math.random()*canvas.height), 0.3));
+		this.objectArray.push(new FloatingObject(source, Math.random() * canvas.width, Math.random() * canvas.height, 0.3));
 	}
 };
 

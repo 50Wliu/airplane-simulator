@@ -6,7 +6,7 @@ function FloatingObject(source, x, y, scale, speed)
 	this.x = x;
 	this.y = y;
 	this.scale = scale;
-  this.speed = speed;
+	this.speed = speed;
 	this.image = new Image();
 	var bindThis = this;  //Convince onload that we actually mean FloatingObject
 	this.image.onload = function()
@@ -19,10 +19,8 @@ function FloatingObject(source, x, y, scale, speed)
 
 FloatingObject.prototype.draw = function()
 {
-
-	context.clearRect(this.x - 5, this.y, this.width, this.height);  //FIXME: Figure out why this leaves a rendering artifact using `this.x - 1`
-  context.drawImage(this.image, this.x, this.y, this.width, this.height);
-  console.log(this.x);
+	context.clearRect(this.x - this.speed - 1, this.y, this.width, this.height);  //FIXME: Figure out why this leaves a rendering artifact using `this.x - this.speed`
+	context.drawImage(this.image, this.x, this.y, this.width, this.height);
 };
 
 FloatingObject.prototype.setCoords = function(x, y, speed)
@@ -30,11 +28,11 @@ FloatingObject.prototype.setCoords = function(x, y, speed)
 	if(x >= canvas.width)  //The object has passed the edge of the canvas, so reset its path
 	{
 		x = -this.width;  //We want the object to move in gracefully instead of just reappearing
-
-		y = Math.round(Math.random() * canvas.height);  //Randomize the height
-    speed = Math.round(Math.random() * 4 + 1);
+		y = Math.random() * canvas.height;  //Randomize the height
+		speed = Math.random() * 4 + 1;
+	}
 
 	this.x = x;
 	this.y = y;
-  this.speed = speed;
+	this.speed = speed;
 };

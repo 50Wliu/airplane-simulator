@@ -20,31 +20,21 @@ function StartMainMenu()
 	[],
 	200, 50, 200,
 	function(numItem)
-{
-	if(numItem === 0)
 	{
-		StartGame();
-	}
-});
+		if(numItem === 0)
+		{
+			StartGame();
+		}
+	});
 
+        $.getJSON("json/menu.json", function (data) {
+	        $("body").append(buildHtml(data));
+        });
+	/*
+	var menu = buildHtml($.getJSON("json/menu.json"));
+	$("body").append(menu);
+	//GameLoopManager.run(function(){MainMenu.Tick();});
 
-$.ajax({
-	type: "POST",
-	url: "json/welcome_menu.json",
-	dataType: "script",
-	async: false,
-	contentType: "application/json; charset=utf-2",
-	success: function(data){
-		var menu = buildHtml(eval(data)); //Using eval() for a temparary fix
-		$("body").append(menu);
-	},
-	error: function(data){
-		console.log("Error loading JSON! WHAT THE HECK IS WRONG")
-	}
-});
-
-
-//GameLoopManager.run(function(){MainMenu.Tick();});
-
-//document.addEventListener("mousedown", function(e){MainMenu.mouseDown(e);}, false);
+	//document.addEventListener("mousedown", function(e){MainMenu.mouseDown(e);}, false);
+	*/
 }

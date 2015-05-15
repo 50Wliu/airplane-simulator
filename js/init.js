@@ -27,6 +27,7 @@ function StartMainMenu()
 		}
 	});
 
+
         $.getJSON("json/menu.json", function (data) {
 	        $("body").append(buildHtml(data));
         });

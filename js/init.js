@@ -27,8 +27,8 @@ function StartMainMenu()
 		}
 	});
 
-  $.getJSON("json/menu.json", function (data) {
-	   $("body").append(buildHtml(data));
-  );
+	$.getJSON("json/menu.json", function (data) {
+		$("body").append(buildHtml(data));
+	});
 
 }

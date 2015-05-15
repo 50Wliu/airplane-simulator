@@ -16,6 +16,8 @@
 		<script src="js/GameLoopManager.js"></script>
 		<script src="js/FloatingObject.js"></script>
 		<script src="js/FloatingObjectManager.js"></script>
+		<script src="js/lobby.js"></script>
+		<script src="js/Backend.js"></script>
 
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="vendor/octicons/octicons.css">
@@ -25,7 +27,7 @@
 		<div id="main_container"></div>
 		<div id="overlays">
 			<div id="menu">
-				<form role="form" onsubmit="startLobby();"; return false">
+				<form id="form" role="form" onsubmit="StartLobbyMenu(document.getElementById('nickname').value); return false;">
 					<div class="form-group">
 						<h3><center>The Battle of Calculus Planes</center></h2>
 					</div>
@@ -59,12 +61,5 @@
 			</div>
 		</div>
 
-		<script>
-			//Enable tooltips
-			$(document).ready(function()
-			{
-				$('[data-toggle="tooltip"]').tooltip();
-			});
-		</script>
 	</body>
 </html>

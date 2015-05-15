@@ -1,8 +1,13 @@
 "use strict";
 var canvas;
 var context;
-
+var mainMenu;
+var lobby
 $(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+	$("#form").submit(function(e){
+		e.preventDefault();
+	});
 	$("<canvas/>").attr({
 		id: "main_canvas", width:$(document).innerWidth()+"px", height: $(document).innerHeight()+"px"
 	}).css({
@@ -15,19 +20,11 @@ $(document).ready(function(){
 
 function StartMainMenu()
 {
-	//Creating a new Menu Object
-	var MainMenu = new Menu("",
-	[],
-	200, 50, 200,
-	function(numItem)
-	{
-		if(numItem === 0)
-		{
-			StartGame();
-		}
-	});
+	mainMenu = new Menu();
+}
 
-	//GameLoopManager.run(function(){MainMenu.Tick();});
-
-	//document.addEventListener("mousedown", function(e){MainMenu.mouseDown(e);}, false);
+function StartLobbyMenu(nickname){
+	var backend = new Backend();
+	mainMenu.eraseSelf("overlays");
+	lobby = new Lobby(nickname, backend);
 }

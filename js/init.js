@@ -27,15 +27,8 @@ function StartMainMenu()
 		}
 	});
 
+  $.getJSON("json/menu.json", function (data) {
+	   $("body").append(buildHtml(data));
+  );
 
-        $.getJSON("json/menu.json", function (data) {
-	        $("body").append(buildHtml(data));
-        });
-	/*
-	var menu = buildHtml($.getJSON("json/menu.json"));
-	$("body").append(menu);
-	//GameLoopManager.run(function(){MainMenu.Tick();});
-
-	//document.addEventListener("mousedown", function(e){MainMenu.mouseDown(e);}, false);
-	*/
 }

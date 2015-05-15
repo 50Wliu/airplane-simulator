@@ -8,19 +8,18 @@ function FloatingObject(source, x, y, scale, speed)
 	this.scale = scale;
 	this.speed = speed;
 	this.image = new Image();
-	this.image.src = source;
-
 	var bindThis = this;  //Convince onload that we actually mean FloatingObject
 	this.image.onload = function()
 	{
 		bindThis.width = Math.round(bindThis.image.width * scale);
 		bindThis.height = Math.round(bindThis.image.height * scale);
 	};
+	this.image.src = source;
 }
 
 FloatingObject.prototype.draw = function()
 {
-	context.clearRect(this.x - this.speed, this.y, this.width, this.height);
+	context.clearRect(this.x - this.speed - 1, this.y, this.width, this.height);  //FIXME: Figure out why this leaves a rendering artifact using `this.x - this.speed`
 	context.drawImage(this.image, this.x, this.y, this.width, this.height);
 };
 

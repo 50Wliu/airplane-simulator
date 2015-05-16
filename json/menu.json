@@ -1,0 +1,65 @@
+["div", {"id": "overlays"}, [
+    ["div", {"id": "menu"}, [
+        ["form", {"id": "form", "role": "form", "onsubmit": "alert('Not yet implemented'); return false;"}, [
+            ["h3", {}, [
+                ["center", {}, [
+                    "The Battle of Calculus Planes"
+                ]]
+            ]],
+            ["div", {"class": "form-group"}, [
+                ["input", {"id": "nickname", "class": "form-control", "placeholder": "Nickname", "maxlength": "16"}]
+            ]],
+            ["div", {"class": "btn-group play"}, [
+                ["button", {"type": "submit", "class": "btn btn-primary btn-play"}, [
+                    "Play"
+                ]],
+                ["button", {"type": "button", "class": "btn btn-primary dropdown-toggle", "data-toggle": "dropdown", "aria-expanded": "false"}, [
+                    ["span", {"class": "caret"}],
+                    ["span", {"class": "sr-only"}, [
+                        "Toggle Dropdown"
+                    ]]
+                ]],
+                ["ul", {"class": "dropdown-menu", "role": "menu"}, [
+                    ["li", {}, [
+                        ["a", {"href": "#"}, [
+                            "Join private game"
+                        ]]
+                    ]],
+                    ["li", {}, [
+                        ["a", {"href": "#"}, [
+                            "Create private game"
+                        ]]
+                    ]]
+                ]]
+            ]],
+            ["button", {"type": "button", "class": "btn btn-info btn-settings", "data-toggle": "tooltip", "data-placement": "bottom", "title": "Settings", "onclick": "$('#settings').toggle();"}, [
+                ["span", {"class": "octicon octicon-gear"}]
+            ]],
+            ["div", {"id": "settings", "class": "settings checkbox"}, [
+                ["p", {}, [
+                    "No settings yet! :("
+                ]]
+            ]]
+        ]],
+        ["hr", {}],
+        ["center", {}, [
+            ["span", {"class": "text-muted footer"}, [
+                ["p", {}, ["Currently a work-in-progress"]],
+                ["p", {}, [
+                    "Theme shamelessly taken from ",
+                    ["a", {"href": "http://agar.io"}, [
+                        "agar.io"
+                    ]]
+                ]],
+                ["p", {}, [
+                    ["a", {"href": "https://github.com/50Wliu/airplane-simulator"}, [
+                        ["span", {"class": "octicon octicon-pencil"}],
+                        " with ",
+                        ["span", {"class": "octicon octicon-heart"}],
+                        " by Winston, Victor, and Andrew"
+                    ]]
+                ]]
+            ]]
+        ]]
+    ]]
+]]

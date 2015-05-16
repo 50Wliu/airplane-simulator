@@ -1,6 +1,6 @@
 ["div", {"id": "overlays"}, [
     ["div", {"id": "menu"}, [
-        ["form", {"id": "form", "role": "form", "onsubmit": "StartLobbyMenu(document.getElementById('nickname').value);"}, [
+        ["form", {"id": "form", "role": "form", "onsubmit": "alert('Not yet implemented');"}, [
             ["h3", {}, [
                 ["center", {}, [
                     "The Battle of Calculus Planes"

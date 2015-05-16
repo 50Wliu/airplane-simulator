@@ -1,11 +1,20 @@
 "use strict";
 var canvas;
 var context;
+var mainMenu;
+var lobby;
 
 $(document).ready(function(){
-	$("<canvas/>").attr({
+	$('[data-toggle="tooltip"]').tooltip();  //Enable Bootstrap tooltips
+	$("#form").submit(function(event)
+	{
+		event.preventDefault();  //Prevent forum submissions from refreshing the page
+	});
+	$("<canvas/>").attr(
+	{
 		id: "main_canvas", width:$(document).innerWidth()+"px", height: $(document).innerHeight()+"px"
-	}).css({
+	}).css(
+	{
 		background: "#add8e6"
 	}).appendTo("#main_container");
 	canvas = document.getElementById("main_canvas");
@@ -27,9 +36,10 @@ function StartMainMenu()
 		}
 	});
 
-        $.getJSON("json/menu.json", function (data) {
-	        $("body").append(buildHtml(data));
-        });
+    $.getJSON("json/menu.json", function (data)
+	{
+        $("body").append(buildHtml(data));
+    });
 	/*
 	var menu = buildHtml($.getJSON("json/menu.json"));
 	$("body").append(menu);
@@ -37,4 +47,11 @@ function StartMainMenu()
 
 	//document.addEventListener("mousedown", function(e){MainMenu.mouseDown(e);}, false);
 	*/
+}
+
+function StartLobbyMenu(nickname)
+{
+	var backend = new Backend();
+	mainMenu.remove("overlays");
+	lobby = new Lobby(nickname, backend);
 }

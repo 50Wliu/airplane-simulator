@@ -17,55 +17,51 @@
 		<script src="js/FloatingObject.js"></script>
 		<script src="js/FloatingObjectManager.js"></script>
 		<script src="js/buildHTML.js"></script>
+		<script src="js/lobby.js"></script>
+		<script src="js/backend.js"></script>
 
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="vendor/octicons/octicons.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="vendor/octicons/octicons.css">
+		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		<div id="main_container"></div>
 		<!-- <div id="overlays">
 			<div id="menu">
-				<form role="form" onsubmit="alert('Pew!'); return false">
-					<div class="form-group">
-						<h3><center>The Battle of Calculus Planes</center></h2>
-					</div>
+				<form id="form" role="form" onsubmit="StartLobbyMenu(document.getElementById('nickname').value);">
+					<h3><center>The Battle of Calculus Planes</center></h2>
 
 					<div class="form-group">
-						<input id="nickname" class="form-control" placeholder="Nickname" maxlength="16"/>
+						<input id="nickname" class="form-control" placeholder="Nickname" autofocus required maxlength="16"/>
 					</div>
 
-					<div class="form-group">
-						<button type="submit" id="play" class="btn btn-play btn-primary">Play</button>
-						<button class="btn btn-info btn-settings" data-toggle="tooltip" data-placement="bottom" title="Settings" onclick="$('#settings').toggle(); return false;"><span class="octicon octicon-gear"></span></button>
-
-						<br clear="both" />
+					<div class="btn-group play">
+						<button type="submit" class="btn btn-primary btn-play">Play</button>
+						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+							<span class="carts ret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Join private game</a></li>
+							<li><a href="#">Create private game</a></li>
+						</ul>
 					</div>
+					<button type="button" class="btn btn-info btn-settings" data-toggle="tooltip" data-placement="bottom" title="Settings" onclick="$('#settings').toggle();"><span class="octicon octicon-gear"></span></button>
 
-					<div id="settings" class="checkbox" style="display:none;">
-						<div style="margin: 6px;">
-							<p>No settings yet! :(</p>
-						</div>
+					<div id="settings" class="settings checkbox">
+						<p>No settings yet! :(</p>
 					</div>
 				</form>
 
 				<hr />
 
-				<center><span class="text-muted">
+				<center><span class="text-muted footer">
 					<p>Currently a work-in-progress</p>
-					<p>Theme shamelessly taken from <a href="agar.io">agar.io</a></p>
+					<p>Theme shamelessly taken from <a href="http://agar.io">agar.io</a></p>
 					<br/>
 					<p><a href="https://github.com/50Wliu/airplane-simulator"><span class="octicon octicon-pencil"></span> with <span class="octicon octicon-heart"></span> by Winston, Victor, and Andrew</a></p>
 				</span></center>
 			</div>
 		</div> -->
-
-		<script>
-			//Enable tooltips
-			$(document).ready(function()
-			{
-				$('[data-toggle="tooltip"]').tooltip();
-			});
-		</script>
 	</body>
 </html>

@@ -26,15 +26,15 @@ FloatingObject.prototype.draw = function()
 
 FloatingObject.prototype.setCoords = function(x, y, speed)
 {
-	if(x >= canvas.width + speed)  //The object has passed the edge of the canvas, so reset its path
+	if(x >= canvas.width + speed)  //The object has passed the edge of the canvas
 	{
-		this.x = -this.width;  //We want the object to move in gracefully instead of just reappearing
-		this.y = Math.random() * canvas.height;  //Randomize the height
+		this.x = -this.width;  //Move it in gracefully instead of just reappearing
+		this.y = Math.random() * (canvas.height - this.height);  //Randomize the height
 		this.speed = Math.round(Math.random() * 4 + 1);
 		return;
 	}
 
-	this.x = x;
+	this.x = x + speed;
 	this.y = y;
 	this.speed = speed;
 };

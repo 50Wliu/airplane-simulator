@@ -19,34 +19,36 @@
 		<script src="js/lobby.js"></script>
 		<script src="js/Backend.js"></script>
 
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="vendor/octicons/octicons.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="vendor/octicons/octicons.css">
+		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		<div id="main_container"></div>
 		<div id="overlays">
 			<div id="menu">
 				<form id="form" role="form" onsubmit="StartLobbyMenu(document.getElementById('nickname').value); return false;">
-					<div class="form-group">
-						<h3><center>The Battle of Calculus Planes</center></h2>
-					</div>
+					<h3><center>The Battle of Calculus Planes</center></h2>
 
 					<div class="form-group">
 						<input id="nickname" class="form-control" placeholder="Nickname" maxlength="16"/>
 					</div>
 
-					<div class="form-group">
-						<button type="submit" id="play" class="btn btn-play btn-primary">Play</button>
-						<button class="btn btn-info btn-settings" data-toggle="tooltip" data-placement="bottom" title="Settings" onclick="$('#settings').toggle(); return false;"><span class="octicon octicon-gear"></span></button>
-
-						<br clear="both" />
+					<div class="btn-group play">
+						<button type="submit" class="btn btn-primary btn-play">Play</button>
+						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Join private game</a></li>
+							<li><a href="#">Create private game</a></li>
+						</ul>
 					</div>
+					<button type="button" class="btn btn-info btn-settings" onclick="$('#settings').toggle(); return false;"><span class="octicon octicon-gear"></span></button>
 
-					<div id="settings" class="checkbox" style="display:none;">
-						<div style="margin: 6px;">
-							<p>No settings yet! :(</p>
-						</div>
+					<div id="settings" class="settings checkbox">
+						<p>No settings yet! :(</p>
 					</div>
 				</form>
 

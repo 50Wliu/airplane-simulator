@@ -2,15 +2,19 @@
 var canvas;
 var context;
 var mainMenu;
-var lobby
+var lobby;
+
 $(document).ready(function(){
-	$('[data-toggle="tooltip"]').tooltip();
-	$("#form").submit(function(e){
-		e.preventDefault();
+	$('[data-toggle="tooltip"]').tooltip();  //Enable Bootstrap tooltips
+	$("#form").submit(function(event)
+	{
+		event.preventDefault();  //Prevent forum submissions from refreshing the page
 	});
-	$("<canvas/>").attr({
+	$("<canvas/>").attr(
+	{
 		id: "main_canvas", width:$(document).innerWidth()+"px", height: $(document).innerHeight()+"px"
-	}).css({
+	}).css(
+	{
 		background: "#add8e6"
 	}).appendTo("#main_container");
 	canvas = document.getElementById("main_canvas");
@@ -23,8 +27,9 @@ function StartMainMenu()
 	mainMenu = new Menu();
 }
 
-function StartLobbyMenu(nickname){
+function StartLobbyMenu(nickname)
+{
 	var backend = new Backend();
-	mainMenu.eraseSelf("overlays");
+	mainMenu.remove("overlays");
 	lobby = new Lobby(nickname, backend);
 }

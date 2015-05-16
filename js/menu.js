@@ -6,6 +6,7 @@ var Menu = function()
 	floatingManager.move();
 };
 
-Menu.prototype.eraseSelf = function(id){
+Menu.prototype.remove = function(id)
+{
 	$(document.getElementById(id)).remove();
-}
+};

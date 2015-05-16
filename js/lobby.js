@@ -1,3 +1,5 @@
-var Lobby = function(nickname, backend){
-  
+"use strict";
+var Lobby = function(nickname, backend)
+{
+
 };

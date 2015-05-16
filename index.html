@@ -17,7 +17,7 @@
 		<script src="js/FloatingObject.js"></script>
 		<script src="js/FloatingObjectManager.js"></script>
 		<script src="js/lobby.js"></script>
-		<script src="js/Backend.js"></script>
+		<script src="js/backend.js"></script>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendor/octicons/octicons.css">
@@ -27,7 +27,7 @@
 		<div id="main_container"></div>
 		<div id="overlays">
 			<div id="menu">
-				<form id="form" role="form" onsubmit="StartLobbyMenu(document.getElementById('nickname').value); return false;">
+				<form id="form" role="form" onsubmit="StartLobbyMenu(document.getElementById('nickname').value);">
 					<h3><center>The Battle of Calculus Planes</center></h2>
 
 					<div class="form-group">
@@ -45,7 +45,7 @@
 							<li><a href="#">Create private game</a></li>
 						</ul>
 					</div>
-					<button type="button" class="btn btn-info btn-settings" data-toggle="tooltip" data-placement="bottom" title="Settings" onclick="$('#settings').toggle(); return false;"><span class="octicon octicon-gear"></span></button>
+					<button type="button" class="btn btn-info btn-settings" data-toggle="tooltip" data-placement="bottom" title="Settings" onclick="$('#settings').toggle();"><span class="octicon octicon-gear"></span></button>
 
 					<div id="settings" class="settings checkbox">
 						<p>No settings yet! :(</p>

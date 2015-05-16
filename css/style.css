@@ -45,3 +45,8 @@ body
     margin: 6px;
     display: none;
 }
+
+.footer a
+{
+    text-decoration: none;
+}

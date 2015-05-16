@@ -1,6 +1,6 @@
 ["div", {"id": "overlays"}, [
     ["div", {"id": "menu"}, [
-        ["form", {"id": "form", "role": "form", "onsubmit": "alert('Not yet implemented');"}, [
+        ["form", {"id": "form", "role": "form", "onsubmit": "alert('Not yet implemented'); return false;"}, [
             ["h3", {}, [
                 ["center", {}, [
                     "The Battle of Calculus Planes"
@@ -43,10 +43,15 @@
         ]],
         ["hr", {}],
         ["center", {}, [
-            ["span", {"class": "text-muted"}, [
-                ["p", {},["Currently a work-in-progress"]],
-                ["p", {},["Theme shamelessly taken from agar.io"]],
-                ["p", {},[
+            ["span", {"class": "text-muted footer"}, [
+                ["p", {}, ["Currently a work-in-progress"]],
+                ["p", {}, [
+                    "Theme shamelessly taken from ",
+                    ["a", {"href": "http://agar.io"}, [
+                        "agar.io"
+                    ]]
+                ]],
+                ["p", {}, [
                     ["a", {"href": "https://github.com/50Wliu/airplane-simulator"}, [
                         ["span", {"class": "octicon octicon-pencil"}],
                         " with ",

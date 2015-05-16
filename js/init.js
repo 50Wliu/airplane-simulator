@@ -35,10 +35,3 @@ function StartLobbyMenu(nickname)
 	// lobby = new Lobby(nickname, backend);
 	alert("Temp interface for room selection");
 }
-
-function StartLobbyMenu(nickname)
-{
-	var backend = new Backend();
-	mainMenu.remove("overlays");
-	lobby = new Lobby(nickname, backend);
-}

@@ -6,6 +6,7 @@ var Menu = function()
 	floatingManager.move();
 };
 
+
 Menu.prototype.create = function(){
 	$.getJSON("json/welcome_menu.json", function (data) {
 		console.log(data);

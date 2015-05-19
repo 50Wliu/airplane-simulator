@@ -1,7 +1,7 @@
 "use strict";
 var canvas;
 var context;
-var mainMenu;
+var menu;
 var lobby;
 
 $(document).ready(function(){
@@ -24,12 +24,12 @@ $(document).ready(function(){
 
 function StartMainMenu()
 {
-	mainMenu = new Menu();
+	menu = new Menu();
 }
 
 function StartLobbyMenu(nickname)
 {
 	var backend = new Backend();
-	mainMenu.remove("overlays");
+	menu.remove("overlays");
 	lobby = new Lobby(nickname, backend);
 }

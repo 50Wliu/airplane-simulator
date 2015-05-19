@@ -39,8 +39,8 @@
 							<span class="sr-only">Toggle Dropdown</span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#" onclick="$('#menu').remove(); $('#private').show(); $('#join').show();">Join private game</a></li>
-							<li><a href="#">Create private game</a></li>
+							<li><a href="#" onclick="$('#menu').remove(); $('#join').show();">Join private game</a></li>
+							<li><a href="#" onclick="$('#menu').remove(); $('#create').show();">Create private game</a></li>
 						</ul>
 					</div>
 					<button type="button" class="btn btn-info btn-settings" data-toggle="tooltip" data-placement="bottom" title="Settings" onclick="$('#settings').toggle();"><span class="octicon octicon-gear"></span></button>
@@ -60,25 +60,33 @@
 				</span></center>
 			</div>
 
-			<div id="private">
-				<div id="join">
-					<h3><center>Join a private game</center></h3>
-					<form id="form-private" role="form" onsubmit="alert('Not yet implemented D:'); return false;">
-						<div class="form-group">
-							<input class="join game form-control" placeholder="Game name" autofocus required/>
-							<br/>
-							<input class="join password form-control" placeholder="Password" required/>
-						</div>
+			<div id="join" class="menu-private">
+				<h3><center>Join a private game</center></h3>
+
+				<form id="form-private" role="form" onsubmit="alert('Not yet implemented D:'); return false;">
+					<div class="form-group">
+						<input class="join game form-control" placeholder="Game name" autofocus required/>
+					</div>
+					<div class="form-group">
+						<input class="join password form-control" type="password" placeholder="Password" required/>
+					</div>
 					<button type="submit" class="btn btn-primary btn-private btn-join">Join</button>
-					</form>
-				</div>
-				<div id="create">
-					<form id="form-private" role="form" onsubmit="alert('Not yet implemented D:');">
-						<input class="create game" placeholder="Game name" autofocus required/>
-						<input class="create password" placeholder="Password" required/>
-						<input class="create password confirm" placeholder="Confirm password" required/>
-					</form>
-				</div>
+				</form>
+			</div>
+			<div id="create" class="menu-private">
+				<h3><center>Create a private game</center></h3>
+				<form id="form-private" role="form" onsubmit="alert('Not yet implemented D:'); return false;">
+					<div class="form-group">
+						<input class="create game form-control" placeholder="Game name" autofocus required/>
+					</div>
+					<div class="form-group">
+						<input class="create password form-control" type="password" placeholder="Password" required/>
+					</div>
+					<div class="form-group">
+						<input class="create password confirm form-control" type="password" placeholder="Confirm password" required/>
+					</div>
+					<button type="submit" class="btn btn-primary btn-private btn-join">Create</button>
+				</form>
 			</div>
 		</div>
 	</body>

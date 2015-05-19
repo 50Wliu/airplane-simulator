@@ -14,7 +14,7 @@ body
     z-index: 2;
 }
 
-#menu
+#menu, #private
 {
     width: 350px;
     background-color: #FFFFFF;
@@ -42,11 +42,22 @@ body
 
 .settings
 {
-    margin: 6px;
     display: none;
+    margin: 6px;
 }
 
 .footer a
 {
     text-decoration: none;
+}
+
+#private, #join, #create
+{
+    display: none;
+    z-index: 3;
+}
+
+.btn-join
+{
+    width: 100%;
 }

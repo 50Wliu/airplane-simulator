@@ -16,6 +16,7 @@
 		<script src="js/FloatingObject.js"></script>
 		<script src="js/FloatingObjectManager.js"></script>
 		<script src="js/backend.js"></script>
+		<script src="js/maingame.js"></script>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendor/octicons/octicons.css">
@@ -25,7 +26,7 @@
 		<div id="main_container"></div>
 		<div id="overlays">
 			<div id="menu">
-				<form id="form" role="form" onsubmit="StartLobbyMenu(document.getElementById('nickname').value);">
+				<form id="form" role="form" onsubmit="startMainGame(document.getElementById('nickname').value); return false;">
 					<h3><center>The Battle of Calculus Planes</center></h2>
 
 					<div class="form-group">

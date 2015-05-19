@@ -3,6 +3,7 @@ function FloatingObjectManager()
 {
 	var objectArray = [];
 	this.objectArray = objectArray;
+	this.interval = null;
 }
 
 FloatingObjectManager.prototype.createObject = function(source, amount)
@@ -16,7 +17,7 @@ FloatingObjectManager.prototype.createObject = function(source, amount)
 FloatingObjectManager.prototype.move = function()
 {
 	var bindThis = this;
-	setInterval(function()
+	this.interval = setInterval(function()
 	{
 		for(var i = 0; i < bindThis.objectArray.length; i++)
 		{
@@ -25,3 +26,8 @@ FloatingObjectManager.prototype.move = function()
 		}
 	}, 1000 / 30);
 };
+
+FloatingObjectManager.prototype.stop = function()
+{
+	clearInterval(this.interval);
+}

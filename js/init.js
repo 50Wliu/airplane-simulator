@@ -1,7 +1,7 @@
 "use strict";
 var canvas;
 var context;
-
+var menu;
 $(document).ready(function()
 {
 	$('[data-toggle="tooltip"]').tooltip();  //Enable Bootstrap tooltips
@@ -20,8 +20,13 @@ $(document).ready(function()
 
 	canvas = document.getElementById("main_canvas");
 	context = canvas.getContext("2d");
-
-	var floatingManager = new FloatingObjectManager();
-	floatingManager.createObject("images/menu_airplane.png", 4);
-	floatingManager.move();
+	menu = new Menu();
+	//Making Menu a seperate class just incase we want to add more to it
 });
+
+function startMainGame(nickname){
+	menu.remove();
+	$(document.getElementById("overlays")).remove();
+	$(document.getElementById("main_canvas")).remove();
+	var main_game = new MainGame(nickname);
+}

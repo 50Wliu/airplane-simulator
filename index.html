@@ -41,8 +41,8 @@
 							<span class="sr-only">Toggle Dropdown</span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#" onclick="$('#menu').hide(); $('#join').show();">Join private game</a></li>
-							<li><a href="#" onclick="$('#menu').hide(); $('#create').show();">Create private game</a></li>
+							<li><a href="#" onclick="$('#menu').hide(); $('#join').show(); $('#joinGame').focus();">Join a private game</a></li>
+							<li><a href="#" onclick="$('#menu').hide(); $('#create').show(); $('#createGame').focus();">Create a private game</a></li>
 						</ul>
 					</div>
 					<button type="button" class="btn btn-info btn-settings" data-toggle="tooltip" data-placement="bottom" title="Settings" onclick="$('#settings').toggle();"><span class="octicon octicon-gear"></span></button>
@@ -52,7 +52,7 @@
 					</div>
 				</form>
 
-				<hr />
+				<hr/>
 
 				<center><span class="text-muted footer">
 					<p>Currently a work-in-progress</p>
@@ -63,7 +63,7 @@
 			</div>
 
 			<div id="join" class="menu-private">
-				<button type="button" class="close" data-toggle="tooltip" title="Return to the main menu" label="Close" onclick="$('#join').hide(); $('#menu').show();"><span class="octicon octicon-x"></span></button>
+				<button type="button" class="close" data-toggle="tooltip" title="Return to the main menu" label="Close" onclick="$('#join').hide(); $('#menu').show(); $('#nickname').focus()"><span class="octicon octicon-x"></span></button>
 				<h3><center>Join a private game</center></h3>
 
 				<form id="form-private" role="form" onsubmit="alert('Not yet implemented D:'); return false;">
@@ -73,13 +73,14 @@
 					</div>
 					<div class="form-group">
 						<label for="joinPassword">Enter password</label>
-						<input id="joinGame" class="join password form-control" type="password" placeholder="Password" required/>
+						<input id="joinPassword" class="join password form-control" type="password" placeholder="Password" required/>
 					</div>
 					<button type="submit" class="btn btn-primary btn-private btn-join btn-block">Join</button>
 				</form>
 			</div>
+
 			<div id="create" class="menu-private">
-			  <button type="button" class="close" data-toggle="tooltip" title="Return to the main menu" label="Close" onclick="$('#create').hide(); $('#menu').show();"><span class="octicon octicon-x"></span></button>
+			  <button type="button" class="close" data-toggle="tooltip" title="Return to the main menu" label="Close" onclick="$('#create').hide(); $('#menu').show(); $('#nickname').focus()"><span class="octicon octicon-x"></span></button>
 				<h3><center>Create a private game</center></h3>
 
 				<form id="form-private" role="form" onsubmit="alert('Not yet implemented D:'); return false;">
@@ -92,7 +93,7 @@
 						<input id="createPassword" class="create password form-control" type="password" placeholder="Password" required/>
 					</div>
 					<div class="form-group">
-						<label for="confirmPassword">Make sure you typed it right</label>
+						<label for="confirmPassword">Make sure you typed it correctly</label>
 						<input id="confirmPassword" class="create password confirm form-control" type="password" placeholder="Confirm password" required/>
 					</div>
 					<button type="submit" class="btn btn-primary btn-private btn-create btn-block">Create</button>

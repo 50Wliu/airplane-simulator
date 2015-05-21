@@ -30,4 +30,4 @@ FloatingObjectManager.prototype.move = function()
 FloatingObjectManager.prototype.stop = function()
 {
 	clearInterval(this.interval);
-}
+};

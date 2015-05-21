@@ -4,6 +4,16 @@ body
   overflow: hidden;
 }
 
+h3.private
+{
+    margin-top: 10px;
+}
+
+a:hover, a:focus
+{
+    text-decoration: none;
+}
+
 #overlays
 {
     position: absolute;
@@ -11,10 +21,9 @@ body
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 2;
 }
 
-#menu
+#menu, .menu-private
 {
     width: 350px;
     background-color: #FFFFFF;
@@ -42,11 +51,16 @@ body
 
 .settings
 {
+    display: none;
     margin: 6px;
+}
+
+.menu-private
+{
     display: none;
 }
 
-.footer a
+.btn-private
 {
-    text-decoration: none;
+    margin-bottom: 15px;
 }

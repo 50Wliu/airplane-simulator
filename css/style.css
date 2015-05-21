@@ -4,6 +4,16 @@ body
   overflow: hidden;
 }
 
+a:hover, a:focus
+{
+    text-decoration: none;
+}
+
+h3.private
+{
+    margin-top: 10px;
+}
+
 #overlays
 {
     position: absolute;
@@ -45,11 +55,6 @@ body
     margin: 6px;
 }
 
-.footer a
-{
-    text-decoration: none;
-}
-
 .menu-private
 {
     display: none;
@@ -58,10 +63,4 @@ body
 .btn-private
 {
     margin-bottom: 15px;
-}
-
-.close
-{
-    line-height: inherit;
-    color: blue;
 }

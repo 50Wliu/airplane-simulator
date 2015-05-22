@@ -21,3 +21,11 @@ $(document).ready(function()
 	menu = new Menu();
 	//Making Menu a seperate class just incase we want to add more to it
 });
+
+$(window).resize(function()
+{
+  $("canvas").attr(
+  {
+    width: $(window).innerWidth()+"px", height: $(window).innerHeight()+"px"
+  });
+});

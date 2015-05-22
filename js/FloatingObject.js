@@ -20,7 +20,8 @@ function FloatingObject(source, x, y, scale, speed)
 
 FloatingObject.prototype.draw = function()
 {
-	context.clearRect(this.x - this.speed, this.y, this.width, this.height);
+	//We floor the x and y values here because .clearRect can't reliably erase parts of a pixel
+	context.clearRect(Math.floor(this.x - this.speed), Math.floor(this.y), this.width, this.height);
 	context.drawImage(this.image, this.x, this.y, this.width, this.height);
 };
 
@@ -29,8 +30,8 @@ FloatingObject.prototype.setCoords = function(x, y, speed)
 	if(x >= canvas.width + speed)  //The object has passed the edge of the canvas
 	{
 		this.x = -this.width;  //Move it in gracefully instead of just reappearing
-		this.y = Math.random() * (canvas.height - this.height);  //Randomize the height
-		this.speed = Math.round(Math.random() * 4 + 1);
+		this.y = Math.random() * (canvas.height - this.height);  //Subtract the image's height so that it doesn't go partly offscreen
+		this.speed = Math.random() * 4 + 1;
 		return;
 	}
 

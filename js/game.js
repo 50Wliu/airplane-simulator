@@ -1,3 +1,5 @@
+"use strict";
+
 var scene, renderer, camera;
 
 function MainGame(nickname){
@@ -11,7 +13,7 @@ function init(){
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0xadd8e6);
-  $("#main_container").append(renderer.domElement);
+  $("body").append(renderer.domElement);
   load();
   render();
 }

@@ -18,14 +18,17 @@ $(document).ready(function()
 
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");
-	menu = new Menu();
-	//Making Menu a seperate class just incase we want to add more to it
+
+	drawBackgroundAirplanes();
 });
 
 $(window).resize(function()
 {
-  $("canvas").attr(
-  {
-    width: $(window).innerWidth()+"px", height: $(window).innerHeight()+"px"
-  });
+	$("canvas").attr(
+	{
+		width: $(window).innerWidth()+"px", height: $(window).innerHeight()+"px"
+	}).css(  //Only needed because three.js forces CSS onto the canvas element which overrides the above values
+	{
+		width: $(window).innerWidth()+"px", height: $(window).innerHeight()+"px"
+	});
 });

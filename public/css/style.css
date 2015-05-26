@@ -1,0 +1,52 @@
+body
+{
+  margin: 0px;
+  overflow: hidden;
+}
+
+#overlays
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+#menu
+{
+    width: 350px;
+    background-color: #FFFFFF;
+    margin: 100px auto;
+    border-radius: 15px;
+    padding: 5px 15px 5px 15px;
+}
+
+.btn-group.play
+{
+    width: 86%;
+}
+
+.btn-play
+{
+    width: 90%;
+}
+
+.dropdown-menu
+{
+    left: auto;
+    right: 0;
+    text-align: right;
+}
+
+.settings
+{
+    margin: 6px;
+    display: none;
+}
+
+.footer a
+{
+    text-decoration: none;
+}

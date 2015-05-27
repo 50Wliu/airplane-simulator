@@ -1,21 +1,23 @@
 var scene, renderer;
 function init(nickname){
   scene = new THREE.Scene();
-  cube = new THREE.Mesh(new THREE.BoxGeometry(10,10,10),new THREE.MeshNormalMaterial());
-  var plane = new Plane(0,10,20,"F-35_Lightning", 4 /*rotation not used right now*/, 0.2,nickname);
+  var cube = new THREE.Mesh(new THREE.BoxGeometry(10,10,10),new THREE.MeshNormalMaterial());
 	scene.add(cube);
-  load();
-}
-
-function load(){
   var light = new THREE.AmbientLight(0xffffff,1);
   scene.add(light);
+  load("F-35_Lightning", nickname);
 }
 
-document.addEventListener("keydown", function(e){
-  if(e.keyCode == 38){
-    Plane.move("temp", 0,0,1);
-  } else if(e.keyCode == 40){
-    Plane.move("temp", 0,0,-1);
-  }
-});
+function load(model, name){
+  var dae;
+  var loader = new THREE.ColladaLoader();
+  loader.load("models/"+model+"/model.dae", function(collada){
+    dae = collada.scene;
+    dae.scale.x=dae.scale.y=dae.scale.z=1;
+    dae.rotation.x=Math.PI;
+    dae.updateMatrix();
+    var plane = new Plane(0,10,20,dae, 4 /*rotation not used right now*/, 0.05,name);
+    plane.draw();
+    plane.render();
+  });
+}

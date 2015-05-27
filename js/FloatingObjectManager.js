@@ -10,7 +10,7 @@ FloatingObjectManager.prototype.createObject = function(source, amount)
 {
 	for(var i = 0; i < amount; i++)
 	{
-		this.objectArray.push(new FloatingObject(source, Math.round(Math.random() * canvas.width), Math.random() * canvas.height, 0.3, Math.round(Math.random() * 4 + 1)));
+		this.objectArray.push(new FloatingObject(source, Math.random() * canvas.width, Math.random() * canvas.height, 0.3, Math.random() * 4 + 1));
 	}
 };
 
@@ -30,4 +30,5 @@ FloatingObjectManager.prototype.move = function()
 FloatingObjectManager.prototype.stop = function()
 {
 	clearInterval(this.interval);
+	context.clearRect(0, 0, canvas.width, canvas.height);
 }

@@ -16,7 +16,7 @@ $(document).ready(function()
 	}).css(
 	{
 		background: "#add8e6"
-	}).appendTo("#main_container");
+	}).appendTo("body");
 
 	canvas = document.getElementById("main_canvas");
 	context = canvas.getContext("2d");

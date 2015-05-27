@@ -11,3 +11,11 @@ function load(){
   var light = new THREE.AmbientLight(0xffffff,1);
   scene.add(light);
 }
+
+document.addEventListener("keydown", function(e){
+  if(e.keyCode == 38){
+    Plane.move("temp", 0,0,1);
+  } else if(e.keyCode == 40){
+    Plane.move("temp", 0,0,-1);
+  }
+});

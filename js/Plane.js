@@ -1,3 +1,4 @@
+planes = {};
 function Plane(x, y, z, model, rotation, acceleration, name){
   this.x = x;
   this.y = y;
@@ -6,6 +7,7 @@ function Plane(x, y, z, model, rotation, acceleration, name){
   var loader = new THREE.ColladaLoader();
   var dae;
   var self = this;
+  this.name = name;
   this.camera = new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight, 0.1,1000);
   loader.load("models/"+model+"/model.dae", function(collada){
     dae = collada.scene;
@@ -16,35 +18,34 @@ function Plane(x, y, z, model, rotation, acceleration, name){
     dae.position.z = z;
     dae.updateMatrix();
     scene.add(dae);
-    self.camera.position.z = z + 15;
-    self.camera.position.y = y + 10;
-    self.camera.position.x = x;
-    self.camera.lookAt(new THREE.Vector3(x,y,z));
-    socket.emit('send planes', name, dae);
+    planes[name] = dae;
+    self.renderer = renderer;
+    self.render();
   });
   var renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0xadd8e6);
   $("#main_container").append(renderer.domElement);
-  this.renderer = renderer;
-  this.render();
 }
 
 Plane.prototype.render = function(){
-  requestAnimationFrame(this.render.bind(this));
-  this.renderer.render(scene, this.camera);
+  var bindThis = this;
+  var x,y,z;
+  setTimeout(function(){
+    z = planes[bindThis.name].position.z;
+    x = planes[bindThis.name].position.x;
+    y = planes[bindThis.name].position.y;
+    requestAnimationFrame(bindThis.render.bind(bindThis));
+    bindThis.renderer.render(scene, bindThis.camera);
+    Plane.move(bindThis.name);
+    bindThis.camera.position.z = z + 15;
+    bindThis.camera.position.y = y + 5;
+    bindThis.camera.position.x = x;
+    bindThis.camera.lookAt(new THREE.Vector3(x,y,z));
+  }, 1000/30);
 }
 
 
-Plane.prototype.move = function(){
-  socket.emit('move plane', "1");
-}
-
-Plane.prototype.animate = function(){
-//   var self = this;
-// requestAnimationFrame(function render(){
-//     self.animate();
-//     requestAnimationFrame(render);
-// });
-  //dae.translateZ(dae.position.z + 1);
+Plane.move = function(name){
+  planes[name].position.z -= 0.1;
 }

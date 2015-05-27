@@ -1,22 +1,11 @@
-var scene, renderer, socket;
-planes = {};
+var scene, renderer;
 function init(nickname){
   scene = new THREE.Scene();
   cube = new THREE.Mesh(new THREE.BoxGeometry(10,10,10),new THREE.MeshNormalMaterial());
+  var plane = new Plane(0,10,20,"F-35_Lightning", 4 /*rotation not used right now*/, 0.2,nickname);
 	scene.add(cube);
-  socket = io();
-  socket.on('connect', function(){
-    socket.emit('adduser', nickname);
-  });
-  socket.on('alertConnect', function(username, x, y, z, model){
-    var plane = new Plane(x,y,z,model, 4 /*rotation not used right now*/, 0.2,nickname);
-  });
-  socket.on('get planes', function(splanes){
-    planes = splanes;
-  });
   load();
 }
-
 
 function load(){
   var light = new THREE.AmbientLight(0xffffff,1);

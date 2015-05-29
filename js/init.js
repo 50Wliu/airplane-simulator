@@ -1,7 +1,5 @@
 "use strict";
-var canvas;
-var context;
-var menu;
+var canvas, context, floatingManager;
 $(window).ready(function()
 {
 	$('[data-toggle="tooltip"]').tooltip();  //Enable Bootstrap tooltips
@@ -16,15 +14,18 @@ $(window).ready(function()
 		id: "canvas", width: $(window).innerWidth()+"px", height: $(window).innerHeight()+"px"
 	}).appendTo("body");
 
-  $("#hud").css(
-  {
-    display: "none", width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
-  });
+	$("#hud").css(
+	{
+		display: "none", width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
+	});
 
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");
 
-	drawBackgroundAirplanes();
+	//Background airplanes!
+	floatingManager = new FloatingObjectManager();
+	floatingManager.createObject("images/menu_airplane.png", 4);
+	floatingManager.move();
 });
 
 $(window).resize(function()
@@ -37,8 +38,8 @@ $(window).resize(function()
 		width: $(window).innerWidth()+"px", height: $(window).innerHeight()+"px"
 	});
 
-  $("#hud").css(
-  {
-    width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
-  });
+	$("#hud").css(
+	{
+		width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
+	});
 });

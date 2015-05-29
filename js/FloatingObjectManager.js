@@ -31,4 +31,4 @@ FloatingObjectManager.prototype.stop = function()
 {
 	clearInterval(this.interval);
 	context.clearRect(0, 0, canvas.width, canvas.height);
-}
+};

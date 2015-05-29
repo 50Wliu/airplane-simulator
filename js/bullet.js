@@ -6,6 +6,7 @@ function Bullet(x,y,z){
   this.bullet = cube;
   this.originz = z;
   scene.add(cube);
+  this.i = 0;
   this.move();
 }
 
@@ -13,12 +14,14 @@ Bullet.prototype.move =function(){
   //console.log(this.bullet);
   var bindThis = this;
   setTimeout(function(){
-    bindThis.bullet.position.z -= 0.5;
+    bindThis.bullet.position.z -= 0.75;
     var start = requestAnimationFrame(bindThis.move.bind(bindThis));
-    // if(bindThis.bullet.position.z > bindThis.originz+10){
-    //   cancelAnimationFrame(start);
-    //   scene.remove(start)
-    // }
+    bindThis.i++;
+    if(bindThis.i > 100){
+      cancelAnimationFrame(start);
+      scene.remove(bindThis.bullet);
+    }
   }, 1000/30);
 
 }
+

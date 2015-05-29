@@ -36,7 +36,6 @@ function Plane(x, y, z, dae, rotation, acceleration, name){
       bindThis.move("y", -1);
     }
     if(e.keyCode == 32){
-      console.log("Not yet complete");
       bindThis.shoot();
     }
   });

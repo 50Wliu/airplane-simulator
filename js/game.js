@@ -11,12 +11,13 @@ function init(nickname){
 function load(model, name){
   var dae;
   var loader = new THREE.ColladaLoader();
+  var plane;
   loader.load("models/"+model+"/model.dae", function(collada){
     dae = collada.scene;
     dae.scale.x=dae.scale.y=dae.scale.z=1;
     dae.rotation.x=Math.PI;
     dae.updateMatrix();
-    var plane = new Plane(0,10,20,dae, 4 /*rotation not used right now*/, 0.05,name);
+    plane = new Plane(0,10,20,dae, 4 /*rotation not used right now*/, 0.05,name);
     plane.draw();
     plane.render();
   });

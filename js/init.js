@@ -20,6 +20,7 @@ $(document).ready(function()
 	context = canvas.getContext("2d");
 
 	drawBackgroundAirplanes();
+	startGame("temp");
 });
 
 $(window).resize(function()

@@ -35,9 +35,14 @@ function Plane(x, y, z, dae, rotation, acceleration, name){
     } else if(e.keyCode == 83){
       bindThis.move("y", -1);
     }
+    if(e.keyCode == 32){
+      console.log("Not yet complete");
+      //bindThis.shoot();
+    }
   });
   document.addEventListener("keyup", function(e){
     bindThis.setSpeed(0,0,0);
+    bindThis.setRotation(Math.PI,0,0);
   });
 }
 
@@ -57,20 +62,29 @@ Plane.prototype.render = function(){
     bindThis.dae.position.x-=bindThis.speedx;
     bindThis.dae.position.y+=bindThis.speedy;
     bindThis.dae.position.z+=bindThis.speedz;
-    bindThis.camera.position.z = z + 15;
-    bindThis.camera.position.y = y + 5;
+    bindThis.x = bindThis.dae.position.x;
+    bindThis.y = bindThis.dae.position.y;
+    bindThis.z = bindThis.dae.position.z;
+    bindThis.camera.position.z = z + 20;
+    bindThis.camera.position.y = y + 10;
     bindThis.camera.position.x = x;
-    bindThis.camera.lookAt(new THREE.Vector3(x,y,z));
-  }, 1000/30);
+    bindThis.camera.lookAt(new THREE.Vector3(x,y+4,z));
+  }, 1000/60);
 }
 
 Plane.prototype.move = function(axis, dir){
   switch(axis){
     case "x":
       this.speedx -= dir * this.acceleration;
+      if(Math.abs(this.dae.rotation.z) <= Math.PI/4){
+        this.dae.rotation.z += dir * 0.05;
+      }
       break;
     case "y":
       this.speedy += dir * this.acceleration;
+      if(Math.abs(this.dae.rotation.x - Math.PI) <= Math.PI/5 ){
+        this.dae.rotation.x += dir * 0.05;
+      }
     break;
     case "z":
       this.speedz -= dir * this.acceleration;
@@ -78,8 +92,18 @@ Plane.prototype.move = function(axis, dir){
   }
 }
 
+Plane.prototype.shoot = function(){
+  Bullet.fire(this.x, this.y, this.z);
+}
+
 Plane.prototype.setSpeed = function(val1,val2,val3){
   this.speedx = val1;
   this.speedy = val2;
   this.speedz = val3;
+}
+
+Plane.prototype.setRotation = function(val1,val2,val3){
+  this.dae.rotation.x = val1;
+  this.dae.rotation.y = val2;
+  this.dae.rotation.z = val3;
 }

@@ -13,5 +13,6 @@ function startGame(nickname)
 	floatingManager.stop();
 	$("#overlays").remove();
 	$("#canvas").remove();
+	$("#hud").show();
 	init(nickname);
 }

@@ -2,7 +2,7 @@
 var canvas;
 var context;
 var menu;
-$(document).ready(function()
+$(window).ready(function()
 {
 	$('[data-toggle="tooltip"]').tooltip();  //Enable Bootstrap tooltips
 
@@ -13,14 +13,18 @@ $(document).ready(function()
 
 	$("<canvas/>").attr(
 	{
-		id: "canvas", width: $(document).innerWidth()+"px", height: $(document).innerHeight()+"px"
+		id: "canvas", width: $(window).innerWidth()+"px", height: $(window).innerHeight()+"px"
 	}).appendTo("body");
+
+  $("#hud").css(
+  {
+    display: "none", width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
+  });
 
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");
 
 	drawBackgroundAirplanes();
-	startGame("temp");
 });
 
 $(window).resize(function()
@@ -32,4 +36,9 @@ $(window).resize(function()
 	{
 		width: $(window).innerWidth()+"px", height: $(window).innerHeight()+"px"
 	});
+
+  $("#hud").css(
+  {
+    width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
+  });
 });

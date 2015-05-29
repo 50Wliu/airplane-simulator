@@ -69,3 +69,10 @@ a:hover, a:focus
 {
     margin-bottom: 15px;
 }
+
+#hud
+{
+    position: absolute;
+    background-color: #FFFFFF;
+    bottom: 0;
+}

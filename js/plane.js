@@ -37,7 +37,7 @@ function Plane(x, y, z, dae, rotation, acceleration, name){
     }
     if(e.keyCode == 32){
       console.log("Not yet complete");
-      //bindThis.shoot();
+      bindThis.shoot();
     }
   });
   document.addEventListener("keyup", function(e){
@@ -93,7 +93,7 @@ Plane.prototype.move = function(axis, dir){
 }
 
 Plane.prototype.shoot = function(){
-  Bullet.fire(this.x, this.y, this.z);
+  var bullet = new Bullet(this.x,this.y,this.z);
 }
 
 Plane.prototype.setSpeed = function(val1,val2,val3){

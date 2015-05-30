@@ -14,11 +14,6 @@ function Plane(x, y, z, dae, rotation, acceleration, name){
   this.dae.position.y = this.y;
   this.dae.position.z = this.z;
   this.name = name;
-  this.camera = new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight, 0.1,1000);
-  var renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0xadd8e6);
-  this.renderer = renderer;
   var bindThis = this;
   $("body").append(renderer.domElement);
   document.addEventListener("keydown", function(e){
@@ -57,17 +52,17 @@ Plane.prototype.render = function(){
     x = bindThis.dae.position.x;
     y = bindThis.dae.position.y;
     requestAnimationFrame(bindThis.render.bind(bindThis));
-    bindThis.renderer.render(scene, bindThis.camera);
+    renderer.render(scene, camera);
     bindThis.dae.position.x-=bindThis.speedx;
     bindThis.dae.position.y+=bindThis.speedy;
     bindThis.dae.position.z+=bindThis.speedz;
     bindThis.x = bindThis.dae.position.x;
     bindThis.y = bindThis.dae.position.y;
     bindThis.z = bindThis.dae.position.z;
-    bindThis.camera.position.z = z + 20;
-    bindThis.camera.position.y = y + 10;
-    bindThis.camera.position.x = x;
-    bindThis.camera.lookAt(new THREE.Vector3(x,y+4,z));
+    camera.position.z = z + 20;
+    camera.position.y = y + 10;
+    camera.position.x = x;
+    camera.lookAt(new THREE.Vector3(x,y+4,z));
   }, 1000/60);
 }
 

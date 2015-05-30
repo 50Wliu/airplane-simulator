@@ -13,6 +13,7 @@ function Plane(x, y, z, dae, rotation, acceleration, name){
   this.dae.position.x = this.x;
   this.dae.position.y = this.y;
   this.dae.position.z = this.z;
+  this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
   this.name = name;
   var bindThis = this;
   $("body").append(renderer.domElement);
@@ -52,17 +53,17 @@ Plane.prototype.render = function(){
     x = bindThis.dae.position.x;
     y = bindThis.dae.position.y;
     requestAnimationFrame(bindThis.render.bind(bindThis));
-    renderer.render(scene, camera);
+    renderer.render(scene, this.camera);
     bindThis.dae.position.x-=bindThis.speedx;
     bindThis.dae.position.y+=bindThis.speedy;
     bindThis.dae.position.z+=bindThis.speedz;
     bindThis.x = bindThis.dae.position.x;
     bindThis.y = bindThis.dae.position.y;
     bindThis.z = bindThis.dae.position.z;
-    camera.position.z = z + 20;
-    camera.position.y = y + 10;
-    camera.position.x = x;
-    camera.lookAt(new THREE.Vector3(x,y+4,z));
+    this.camera.position.z = z + 20;
+    this.camera.position.y = y + 10;
+    this.camera.position.x = x;
+    this.camera.lookAt(new THREE.Vector3(x,y+4,z));
   }, 1000/60);
 }
 

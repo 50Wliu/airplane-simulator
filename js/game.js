@@ -1,6 +1,6 @@
 "use strict";
 
-var camera, scene, renderer;
+var scene, renderer;
 function startGame(nickname)
 {
 	floatingManager.stop();
@@ -8,7 +8,6 @@ function startGame(nickname)
 	$("#canvas").remove();
 	$("#hud").show();
 
-	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	renderer.setClearColor(0xadd8e6);

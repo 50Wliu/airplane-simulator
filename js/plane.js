@@ -53,17 +53,17 @@ Plane.prototype.render = function(){
     x = bindThis.dae.position.x;
     y = bindThis.dae.position.y;
     requestAnimationFrame(bindThis.render.bind(bindThis));
-    renderer.render(scene, this.camera);
+    renderer.render(scene, bindThis.camera);
     bindThis.dae.position.x-=bindThis.speedx;
     bindThis.dae.position.y+=bindThis.speedy;
     bindThis.dae.position.z+=bindThis.speedz;
     bindThis.x = bindThis.dae.position.x;
     bindThis.y = bindThis.dae.position.y;
     bindThis.z = bindThis.dae.position.z;
-    this.camera.position.z = z + 20;
-    this.camera.position.y = y + 10;
-    this.camera.position.x = x;
-    this.camera.lookAt(new THREE.Vector3(x,y+4,z));
+    bindThis.camera.position.z = z + 20;
+    bindThis.camera.position.y = y + 10;
+    bindThis.camera.position.x = x;
+    bindThis.camera.lookAt(new THREE.Vector3(x,y+4,z));
   }, 1000/60);
 }
 

@@ -30,16 +30,16 @@ $(window).ready(function()
 
 $(window).resize(function()
 {
-	$("canvas").attr(
-	{
-		width: $(window).innerWidth()+"px", height: $(window).innerHeight()+"px"
-	}).css(  //Only needed because three.js forces CSS onto the canvas element which overrides the above values
-	{
-		width: $(window).innerWidth()+"px", height: $(window).innerHeight()+"px"
-	});
-
 	$("#hud").css(
 	{
 		width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
+	});
+
+	$("canvas").attr(
+	{
+		width: $(window).innerWidth()+"px", height: $(window).innerHeight()-document.getElementById("hud").clientHeight+"px"
+	}).css(  //Only needed because three.js forces CSS onto the canvas element which overrides the above values
+	{
+		width: $(window).innerWidth()+"px", height: $(window).innerHeight()-document.getElementById("hud").clientHeight+"px"
 	});
 });

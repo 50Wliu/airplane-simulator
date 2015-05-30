@@ -4,7 +4,7 @@ body
     overflow: hidden;
 }
 
-canvas
+#canvas
 {
     background-color: #add8e6;
 }

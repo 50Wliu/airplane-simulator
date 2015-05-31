@@ -1,50 +1,113 @@
-function Plane(x, y, z, model, rotation, acceleration, name){
+//VERY BUGGED DON"T TOUCH
+function Plane(x, y, z, dae, rotation, acceleration, name){
   this.x = x;
   this.y = y;
   this.z = z;
   this.rotation = rotation;
-  var loader = new THREE.ColladaLoader();
-  var dae;
-  var self = this;
+  this.acceleration = acceleration;
+  //One acceleation for now till andrew uses CAS
+  this.speedx = 0;
+  this.speedy = 0;
+  this.speedz = 0;
+  this.dae = dae;
+  this.dae.position.x = this.x;
+  this.dae.position.y = this.y;
+  this.dae.position.z = this.z;
+  this.name = name;
   this.camera = new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight, 0.1,1000);
-  loader.load("models/"+model+"/model.dae", function(collada){
-    dae = collada.scene;
-    dae.scale.x=dae.scale.y=dae.scale.z=1;
-    dae.rotation.x=Math.PI;
-    dae.position.x = x;
-    dae.position.y = y;
-    dae.position.z = z;
-    dae.updateMatrix();
-    scene.add(dae);
-    self.camera.position.z = z + 15;
-    self.camera.position.y = y + 10;
-    self.camera.position.x = x;
-    self.camera.lookAt(new THREE.Vector3(x,y,z));
-    socket.emit('send planes', name, dae);
-  });
-  var renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0xadd8e6);
-  $("#main_container").append(renderer.domElement);
-  this.renderer = renderer;
-  this.render();
+  // var renderer = new THREE.WebGLRenderer();
+  // renderer.setSize(window.innerWidth, window.innerHeight);
+  // renderer.setClearColor(0xadd8e6);
+  // this.renderer = renderer;
+  var bindThis = this;
+  $("body").append(renderer.domElement);
+  // document.addEventListener("keydown", function(e){
+  //   if(e.keyCode == 38){
+  //     bindThis.move("z", 1);
+  //   } else if(e.keyCode == 40){
+  //     bindThis.move("z", -1);
+  //   } else if(e.keyCode == 37){
+  //     console.log("moving left");
+  //     bindThis.move("x", -1);
+  //   } else if(e.keyCode == 39){
+  //     bindThis.move("x", 1);
+  //   } else if(e.keyCode == 87){
+  //     bindThis.move("y", 1);
+  //   } else if(e.keyCode == 83){
+  //     bindThis.move("y", -1);
+  //   }
+  //   if(e.keyCode == 32){
+  //     bindThis.shoot();
+  //   }
+  // });
+  // document.addEventListener("keyup", function(e){
+  //   bindThis.setSpeed(0,0,0);
+  //   bindThis.setRotation(Math.PI,0,0);
+  // });
+}
+
+Plane.prototype.draw = function(){
+  scene.add(this.dae);
+}
+
+Plane.prototype.remove = function(){
+  scene.remove(this.dae);
 }
 
 Plane.prototype.render = function(){
-  requestAnimationFrame(this.render.bind(this));
-  this.renderer.render(scene, this.camera);
+  var bindThis = this;
+  var x,y,z;
+  setTimeout(function(){
+    z = bindThis.dae.position.z;
+    x = bindThis.dae.position.x;
+    y = bindThis.dae.position.y;
+    // requestAnimationFrame(bindThis.render.bind(bindThis));
+    // bindThis.renderer.render(scene, bindThis.camera);
+    bindThis.dae.position.x-=bindThis.speedx;
+    bindThis.dae.position.y+=bindThis.speedy;
+    bindThis.dae.position.z+=bindThis.speedz;
+    bindThis.x = bindThis.dae.position.x;
+    bindThis.y = bindThis.dae.position.y;
+    bindThis.z = bindThis.dae.position.z;
+    bindThis.camera.position.z = z + 20;
+    bindThis.camera.position.y = y + 10;
+    bindThis.camera.position.x = x;
+    bindThis.camera.lookAt(new THREE.Vector3(x,y+4,z));
+  }, 1000/60);
 }
 
-
-Plane.prototype.move = function(){
-  socket.emit('move plane', "1");
+Plane.prototype.move = function(axis, dir){
+  switch(axis){
+    case "x":
+      this.speedx -= dir * this.acceleration;
+      if(Math.abs(this.dae.rotation.z) <= Math.PI/4){
+        this.dae.rotation.z += dir * 0.05;
+      }
+      break;
+    case "y":
+      this.speedy += dir * this.acceleration;
+      if(Math.abs(this.dae.rotation.x - Math.PI) <= Math.PI/5 ){
+        this.dae.rotation.x += dir * 0.05;
+      }
+    break;
+    case "z":
+      this.speedz -= dir * this.acceleration;
+      break;
+  }
 }
 
-Plane.prototype.animate = function(){
-//   var self = this;
-// requestAnimationFrame(function render(){
-//     self.animate();
-//     requestAnimationFrame(render);
-// });
-  //dae.translateZ(dae.position.z + 1);
+Plane.prototype.shoot = function(){
+  var bullet = new Bullet(this.x,this.y,this.z);
+}
+
+Plane.prototype.setSpeed = function(val1,val2,val3){
+  this.speedx = val1;
+  this.speedy = val2;
+  this.speedz = val3;
+}
+
+Plane.prototype.setRotation = function(val1,val2,val3){
+  this.dae.rotation.x = val1;
+  this.dae.rotation.y = val2;
+  this.dae.rotation.z = val3;
 }

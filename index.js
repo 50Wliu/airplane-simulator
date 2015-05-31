@@ -7,7 +7,7 @@ var usernames = {};
 
 var rooms = ["FFA"];
 
-var splanes = {};
+var sPlanes = {};
 app.use(express.static(__dirname + '/public'));
 
 http.listen(3000, function(){
@@ -15,50 +15,62 @@ http.listen(3000, function(){
 });
 
 io.sockets.on('connection', function(socket) {
-  socket.on('adduser', function(username) {
+  socket.on('join', function(username) {
+    tracker();
     socket.username = username;
     socket.room = 'FFA';
     usernames[username] = username;
     socket.join('FFA');
-    io.sockets["in"](socket.room).emit('alertConnect',username,Math.random()*20,Math.random()*20,Math.random()*20,"F-35_Lightning");
-    //socket.emit('updaterooms', rooms, 'Lobby');
+    var x = Math.random()*10;
+    var y = Math.random()*10;
+    var z = Math.random()*10;
+    sPlanes[username] = {x:x, y:y, z:z, speedx:0, speedy:0, speedz:0, acc:0.02};
+    io.sockets["in"](socket.room).emit("load plane",  sPlanes);
     console.log("user " + username + " has connected!");
     socket.on('disconnect', function(){
       console.log("user " + username + " has disconnected");
+      delete sPlanes[username];
+      io.sockets["in"](socket.room).emit("remove plane",  username);
     });
   });
-
-  socket.on('send planes', function(name, plane){
-    console.log("------------------");
-    splanes[name] = plane;
-    io.sockets["in"](socket.room).emit('get planes', splanes);
+  socket.on("try move plane", function(name, info){
+    switch(info.axis){
+      case "x":
+        // this.speedx -= dir * this.acceleration;
+        // if(Math.abs(this.dae.rotation.z) <= Math.PI/4){
+        //   this.dae.rotation.z += dir * 0.05;
+        // }
+        sPlanes[name].speedx -= info.dir*sPlanes[name].acc;
+        break;
+      case "y":
+        // this.speedy += dir * this.acceleration;
+        // if(Math.abs(this.dae.rotation.x - Math.PI) <= Math.PI/5 ){
+        //   this.dae.rotation.x += dir * 0.05;
+        // }
+        sPlanes[name].speedy += info.dir*sPlanes[name].acc;
+      break;
+      case "z":
+        //this.speedz -= dir * this.acceleration;
+        sPlanes[name].speedz -= info.dir*sPlanes[name].acc;
+        break;
+    }
+    io.sockets["in"](socket.room).emit("move plane", name, {x:sPlanes[name].x,y:sPlanes[name].y,z:sPlanes[name].z});
   });
+  socket.on("try rotate plane", function(name, info){
 
-  socket.on('move plane', function(name) {
-    splanes[name].positon.x += 1;
   });
-
-  socket.on('create', function(room) {
-      rooms.push(room);
-      socket.emit('updaterooms', rooms, socket.room);
-  });
-
-  socket.on('switchRoom', function(newroom) {
-    var oldroom;
-    oldroom = socket.room;
-    socket.leave(socket.room);
-    socket.join(newroom);
-    socket.emit('updatechat', 'SERVER', 'you have connected to ' + newroom);
-    socket.broadcast.to(oldroom).emit('updatechat', 'SERVER', socket.username + ' has left this room');
-    socket.room = newroom;
-    socket.broadcast.to(newroom).emit('updatechat', 'SERVER', socket.username + ' has joined this room');
-    socket.emit('updaterooms', rooms, newroom);
-  });
-
-  socket.on('disconnect', function() {
-    delete usernames[socket.username];
-    io.sockets.emit('updateusers', usernames);
-    socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
-    socket.leave(socket.room);
+  socket.on("try stop plane", function(name){
+    sPlanes[name].speedx = 0;
+    sPlanes[name].speedy = 0;
+    sPlanes[name].speedz = 0;
   });
 });
+function tracker(){
+  setInterval(function(){
+    for(var i in sPlanes){
+      sPlanes[i].x += sPlanes[i].speedx;
+      sPlanes[i].y += sPlanes[i].speedy;
+      sPlanes[i].z += sPlanes[i].speedz;
+    }
+  }, 1000/60);
+}

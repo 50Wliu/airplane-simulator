@@ -10,27 +10,28 @@
 		<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
-		<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
-		<script src="vendor/ColladaLoader.js"></script>
 		<script src="js/init.js"></script>
-		<script src="js/menu.js"></script>
 		<script src="js/FloatingObject.js"></script>
 		<script src="js/FloatingObjectManager.js"></script>
-		<script src="js/Plane.js"></script>
-		<script src="js/maingame.js"></script>
+		<script src="js/backend.js"></script>
+		<script src="js/game.js"></script>
+		<script src="vendor/ColladaLoader.js"></script>
+		<script src="js/plane.js"></script>
+		<script src="js/bullet.js"></script>
+		<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendor/octicons/octicons.css">
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/styles.css">
 	</head>
 	<body>
-		<div id="main_container"></div>
 		<div id="overlays">
 			<div id="menu">
-				<form id="form" role="form" onsubmit="startMainGame(document.getElementById('nickname').value); return false;">
-					<h3><center>The Battle of Calculus Planes</center></h2>
+				<form id="form" role="form" onsubmit="startGame(document.getElementById('nickname').value); return false;">
+					<h3><center>The Battle of Calculus Planes</center></h3>
 
 					<div class="form-group">
+						<label for="nickname">Choose a nickname</label>
 						<input id="nickname" class="form-control" placeholder="Nickname" autofocus required maxlength="16"/>
 					</div>
 
@@ -41,8 +42,8 @@
 							<span class="sr-only">Toggle Dropdown</span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Join private game</a></li>
-							<li><a href="#">Create private game</a></li>
+							<li><a href="#" onclick="$('#menu').hide(); $('#join').show(); $('#joinGame').focus();">Join a private game</a></li>
+							<li><a href="#" onclick="$('#menu').hide(); $('#create').show(); $('#createGame').focus();">Create a private game</a></li>
 						</ul>
 					</div>
 					<button type="button" class="btn btn-info btn-settings" data-toggle="tooltip" data-placement="bottom" title="Settings" onclick="$('#settings').toggle();"><span class="octicon octicon-gear"></span></button>
@@ -52,7 +53,7 @@
 					</div>
 				</form>
 
-				<hr />
+				<hr/>
 
 				<center><span class="text-muted footer">
 					<p>Currently a work-in-progress</p>
@@ -60,6 +61,23 @@
 					<br/>
 					<p><a href="https://github.com/50Wliu/airplane-simulator"><span class="octicon octicon-pencil"></span> with <span class="octicon octicon-heart"></span> by Winston, Victor, and Andrew</a></p>
 				</span></center>
+			</div>
+
+			<div id="join" class="menu-private">
+				<a href="#" onclick="$('#join').hide(); $('#menu').show(); $('#nickname').focus()"><span class="octicon octicon-arrow-left"></span> Return to the main menu</a>
+				<h3 class="private"><center>Join a private game</center></h3>
+
+				<form id="form-private" role="form" onsubmit="alert('Not yet implemented D:'); return false;">
+					<div class="form-group">
+						<label for="joinGame">Which game do you want to join?</label>
+						<input id="joinGame" class="join game form-control" placeholder="Game name" autofocus required/>
+					</div>
+					<div class="form-group">
+						<label for="joinPassword">Enter password</label>
+						<input id="joinPassword" class="join password form-control" type="password" placeholder="Password" required/>
+					</div>
+					<button type="submit" class="btn btn-primary btn-private btn-join btn-block">Join</button>
+				</form>
 			</div>
 		</div>
 	</body>

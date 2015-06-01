@@ -47,7 +47,7 @@ $(window).ready(function()
 
 	//Background airplanes!
 	floatingManager = new FloatingObjectManager();
-	floatingManager.createObject("images/menu_airplane1.png", 4);
+	floatingManager.createObject("images/menu_airplane.png", 4);
 	floatingManager.move();
 });
 

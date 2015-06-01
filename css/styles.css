@@ -76,3 +76,10 @@ a:hover, a:focus
     background-color: #FFFFFF;
     bottom: 0;
 }
+
+.hud
+{
+    position: absolute;
+    background-color: #000000;
+    border-radius: 5px;
+}

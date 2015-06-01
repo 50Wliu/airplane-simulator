@@ -47,17 +47,22 @@ io.sockets.on('connection', function(socket) {
         // if(Math.abs(this.dae.rotation.x - Math.PI) <= Math.PI/5 ){
         //   this.dae.rotation.x += dir * 0.05;
         // }
+
         sPlanes[name].speedy += info.dir*sPlanes[name].acc;
       break;
       case "z":
         //this.speedz -= dir * this.acceleration;
-        sPlanes[name].speedz -= info.dir*sPlanes[name].acc;
+        if(Math.abs(sPlanes[name].speedz) >= 4){
+          sPlanes[name].speedz = -info.dir*2;
+        } else {
+          sPlanes[name].speedz -= info.dir*sPlanes[name].acc;
+        }
         break;
     }
     io.sockets["in"](socket.room).emit("move plane", name, {x:sPlanes[name].x,y:sPlanes[name].y,z:sPlanes[name].z});
   });
   socket.on("try rotate plane", function(name, info){
-
+    io.sockets["in"](socket.room).emit("rotate plane", name, {dir:info.dir})
   });
   socket.on("try stop plane", function(name){
     sPlanes[name].speedx = 0;

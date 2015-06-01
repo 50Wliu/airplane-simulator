@@ -34,7 +34,8 @@ function startGame(name)
 		cPlanes[name].camera.position.z = info.z + 20;
 	});
 	socket.on("rotate plane", function(name, info){
-		cPlanes[name].dae.rotation.x += 0.02;
+		cPlanes[name].dae.rotation.y += info.dir*0.02;
+		//cPlanes[name].camera.rotation.y -= info.dir*0.02;
 	});
 	scene = new THREE.Scene();
 	var cube = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
@@ -50,10 +51,10 @@ function startGame(name)
 			socket.emit("try move plane", nickname, {axis:"z", dir:-1});
     } else if(e.keyCode == 37){
 			//socket.emit("try move plane", nickname, {axis:"x", dir:1});
-			socket.emit("try rotate plane", nickname, {axis:"x", dir:1});
+			socket.emit("try rotate plane", nickname, {axis:"x", dir:-1});
     } else if(e.keyCode == 39){
 			//socket.emit("try move plane", nickname, {axis:"x", dir:-1});
-			socket.emit("try rotate plane", nickname, {axis:"x", dir:-1});
+			socket.emit("try rotate plane", nickname, {axis:"x", dir:1});
     } else if(e.keyCode == 87){
 			socket.emit("try move plane", nickname, {axis:"y", dir:1});
     } else if(e.keyCode == 83){

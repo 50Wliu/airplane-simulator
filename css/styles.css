@@ -83,3 +83,8 @@ a:hover, a:focus
     border-radius: 3px;
     margin: 5px;
 }
+
+.hud:hover
+{
+    cursor: pointer;
+}

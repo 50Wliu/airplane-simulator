@@ -16,7 +16,7 @@ $(window).ready(function()
 
 	$("#hud").css(
 	{
-		display: "none", width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
+		width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
 	});
 
 	var width = $("#hud").innerWidth()/10;
@@ -58,7 +58,16 @@ $(window).resize(function()
 		width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
 	});
 
-	$("canvas").attr(
+  var width = $("#hud").innerWidth()/10;
+	for(var element=0; element<=9; element++)
+	{
+    	$(".hud."+element).css(
+    	{
+    		left: width*element, width: $("#hud").innerWidth()/10-10+"px", height: $("#hud").innerHeight()-10+"px"
+    	});
+	}
+
+	$("#canvas").attr(
 	{
 		width: $(window).innerWidth()+"px", height: $(window).innerHeight()-document.getElementById("hud").clientHeight+"px"
 	}).css(  //Only needed because three.js forces CSS onto the canvas element which overrides the above values

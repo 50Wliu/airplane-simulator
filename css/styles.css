@@ -72,6 +72,7 @@ a:hover, a:focus
 
 #hud
 {
+    display: none;
     position: absolute;
     background-color: #FFFFFF;
     bottom: 0;
@@ -87,4 +88,15 @@ a:hover, a:focus
 .hud:hover
 {
     cursor: pointer;
+}
+
+#graph
+{
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }

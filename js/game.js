@@ -7,6 +7,7 @@ function startGame(nickname)
 	$("#overlays").remove();
 	$("#canvas").remove();
 	$("#hud").show();
+	$("#graph").show();
 
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight-$("#hud").innerHeight());

@@ -7,7 +7,6 @@ function startGame(nickname)
 	$("#overlays").remove();
 	$("#canvas").remove();
 	$("#hud").show();
-	$("#graph").show();
 
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight-$("#hud").innerHeight());
@@ -19,6 +18,8 @@ function startGame(nickname)
 
 	var light = new THREE.AmbientLight(0xffffff, 1);
 	scene.add(light);
+
+	var graph = new Graph();
 
 	loadPlane("F-35_Lightning", nickname);
 }

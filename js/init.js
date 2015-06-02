@@ -16,13 +16,16 @@ $(window).ready(function()
 
 	$("#hud").css(
 	{
-		display: "none", width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
+		/*display: "none", */width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
 	});
 
 	var width = $("#hud").innerWidth()/10;
 	for(var element=0; element<=9; element++)
 	{
-    	$(".hud."+element).css(
+    	$(".hud."+element).attr(
+    	{
+    	  onclick: "$('.hud.'+" + element + ").css({'background-color': GetRandomColor()})"
+    	}).css(
     	{
     		left: width*element, 'background-color': GetRandomColor(), width: $("#hud").innerWidth()/10-10+"px", height: $("#hud").innerHeight()-10+"px"
     	});

@@ -16,7 +16,7 @@ $(window).ready(function()
 
 	$("#hud").css(
 	{
-		/*display: "none", */width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
+		display: "none", width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
 	});
 
 	var width = $("#hud").innerWidth()/10;

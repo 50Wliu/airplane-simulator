@@ -34,7 +34,7 @@ a:hover, a:focus
     background-color: #FFFFFF;
     margin: 100px auto;
     border-radius: 15px;
-    padding: 5px 15px 5px 15px;
+    padding: 5px 15px;
 }
 
 .btn-group.play
@@ -80,6 +80,6 @@ a:hover, a:focus
 .hud
 {
     position: absolute;
-    background-color: #000000;
-    border-radius: 5px;
+    border-radius: 3px;
+    margin: 5px;
 }

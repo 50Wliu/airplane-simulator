@@ -19,28 +19,14 @@ $(window).ready(function()
 		display: "none", width: $(window).innerWidth()+"px", height: $(window).innerHeight()/9+"px"
 	});
 
-  $(".hud").css(
-  {
-    width: $("#hud").innerWidth()/10+"px", height: $("#hud").innerHeight()+"px"
-  });
-
-  var width = $("#hud").innerWidth()/10;
-  for(var element=0; element<=9; element++)
-  {
-    $(".hud."+element).css(
-    {
-      left: width*element, 'background-color': function()
-      {
-        var letters = '0123456789ABCDEF'.split('');
-        var color = '#';
-        for (var i = 0; i < 6; i++ )
-        {
-          color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-      }
-    });
-  }
+	var width = $("#hud").innerWidth()/10;
+	for(var element=0; element<=9; element++)
+	{
+    	$(".hud."+element).css(
+    	{
+    		left: width*element, 'background-color': GetRandomColor(), width: $("#hud").innerWidth()/10-10+"px", height: $("#hud").innerHeight()-10+"px"
+    	});
+	}
 
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");
@@ -50,6 +36,17 @@ $(window).ready(function()
 	floatingManager.createObject("images/menu_airplane.png", 4);
 	floatingManager.move();
 });
+
+function GetRandomColor()  //Temporary until the HUD actually does something
+{
+	var letters = '0123456789ABCDEF'.split('');
+	var color = '#';
+	for (var i = 0; i < 6; i++ )
+	{
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
+}
 
 $(window).resize(function()
 {

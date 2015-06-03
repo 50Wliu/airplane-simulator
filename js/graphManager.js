@@ -1,8 +1,8 @@
+"use strict";
 function GraphManager(canvasOverlay){
   $("#" + canvasOverlay).show();
   this.canvasOverlay = document.getElementById(canvasOverlay);
   this.canvas = document.getElementById(canvasOverlay.substr(0, canvasOverlay.search('-')));
-  console.log(canvasOverlay.substr(0, canvasOverlay.search('-')));
   $("#" + canvasOverlay.substr(0, canvasOverlay.search('-'))).show();
   this.canvas.width = 300;
   this.canvas.height = $(document).height();

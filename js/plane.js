@@ -44,7 +44,7 @@ function Plane(x, y, z, dae, rotation, acceleration, name){
 Plane.prototype.draw = function(){
   scene.add(this.dae);
 }
-var temp = 0;
+var temp = 10;
 Plane.prototype.render = function(){
   var bindThis = this;
   var x,y,z;

@@ -24,9 +24,9 @@ function Graph(graphName, context, canvas, canvasOverlay, x, y)
 
 Graph.prototype.drawDot = function(nt, ny)
 {
-    if(nt > this.context.canvas.width - 10)  //Don't keep drawing past the graph - "scroll" it instead
+    if(nt > this.context.canvas.width - 10 - 10)  //Don't keep drawing past the graph - "scroll" it instead
     {
-        nt = this.context.canvas.width - 10;
+        nt = this.context.canvas.width - 10 - 10;
     	var imageData = this.context.getImageData(this.x, this.y, this.canvas.width - 10, 100);
     	this.context.putImageData(imageData, this.x - 1, this.y);
     	//this.context.clearRect(this.context.canvas.width - 10, this.y, 1, 100);  //Clear the last pixel

@@ -1,6 +1,6 @@
 "use strict";
 
-var scene, renderer;
+var scene, renderer, graphManager;
 function startGame(nickname)
 {
 	floatingManager.stop();
@@ -19,7 +19,10 @@ function startGame(nickname)
 	var light = new THREE.AmbientLight(0xffffff, 1);
 	scene.add(light);
 
-	var graph = new Graph();
+	graphManager = new GraphManager("graph");
+	graphManager.addGraph("position");
+	graphManager.addGraph("velocity");
+	graphManager.addGraph("acceleration");
 
 	loadPlane("F-35_Lightning", nickname);
 }

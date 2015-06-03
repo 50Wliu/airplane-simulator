@@ -24,7 +24,7 @@ $(window).ready(function()
 	{
     	$(".hud."+element).attr(
     	{
-    	  onclick: "$('.hud.'+" + element + ").css({'background-color': GetRandomColor()})"
+    	  onclick: "$('.hud.'+" + element + ").css({'background-color': GetRandomColor()}); graphManager.addGraph('HII');"
     	}).css(
     	{
     		left: width*element, 'background-color': GetRandomColor(), width: $("#hud").innerWidth()/10-10+"px", height: $("#hud").innerHeight()-10+"px"
@@ -38,6 +38,7 @@ $(window).ready(function()
 	floatingManager = new FloatingObjectManager();
 	floatingManager.createObject("images/menu_airplane.png", 4);
 	floatingManager.move();
+	//startGame("t");
 });
 
 function GetRandomColor()  //Temporary until the HUD actually does something

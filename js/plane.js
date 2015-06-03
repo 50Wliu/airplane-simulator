@@ -44,10 +44,11 @@ function Plane(x, y, z, dae, rotation, acceleration, name){
 Plane.prototype.draw = function(){
   scene.add(this.dae);
 }
-
+var temp = 0;
 Plane.prototype.render = function(){
   var bindThis = this;
   var x,y,z;
+
   setTimeout(function(){
     z = bindThis.dae.position.z;
     x = bindThis.dae.position.x;
@@ -64,6 +65,9 @@ Plane.prototype.render = function(){
     bindThis.camera.position.y = y + 10;
     bindThis.camera.position.x = x;
     bindThis.camera.lookAt(new THREE.Vector3(x,y+4,z));
+    graphManager.drawOnGraph("position", temp, bindThis.z);
+    graphManager.drawOnGraph("velocity", temp, bindThis.speedz*10);
+    temp++;
   }, 1000/60);
 }
 

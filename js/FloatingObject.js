@@ -20,7 +20,7 @@ function FloatingObject(source, x, y, scale, speed)
 
 FloatingObject.prototype.draw = function()
 {
-	//We floor the x and y values here because .clearRect can't reliably erase parts of a pixel
+	//We round the x and y values here because .clearRect can't reliably erase parts of a pixel
 	context.clearRect(Math.floor(this.x - this.speed), Math.floor(this.y), Math.ceil(this.width), Math.ceil(this.height));
 	context.drawImage(this.image, this.x, this.y, this.width, this.height);
 };

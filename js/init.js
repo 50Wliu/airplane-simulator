@@ -22,13 +22,13 @@ $(window).ready(function()
 	var width = $("#hud").innerWidth()/10;
 	for(var element=0; element<=9; element++)
 	{
-    	$(".hud."+element).attr(
-    	{
-    	  onclick: "$('.hud.'+" + element + ").css({'background-color': GetRandomColor()}); graphManager.addGraph('HII');"
-    	}).css(
-    	{
-    		left: width*element, 'background-color': GetRandomColor(), width: $("#hud").innerWidth()/10-10+"px", height: $("#hud").innerHeight()-10+"px"
-    	});
+		$(".hud."+element).attr(
+		{
+			onclick: "$('.hud.'+" + element + ").css({'background-color': GetRandomColor()}); graphManager.addGraph('HII');"
+		}).css(
+		{
+			left: width*element, 'background-color': GetRandomColor(), width: $("#hud").innerWidth()/10-10+"px", height: $("#hud").innerHeight()-10+"px"
+		});
 	}
 
 	canvas = document.getElementById("canvas");
@@ -62,10 +62,10 @@ $(window).resize(function()
   var width = $("#hud").innerWidth()/10;
 	for(var element=0; element<=9; element++)
 	{
-    	$(".hud."+element).css(
-    	{
-    		left: width*element, width: $("#hud").innerWidth()/10-10+"px", height: $("#hud").innerHeight()-10+"px"
-    	});
+		$(".hud."+element).css(
+		{
+			left: width*element, width: $("#hud").innerWidth()/10-10+"px", height: $("#hud").innerHeight()-10+"px"
+		});
 	}
 
 	$("#canvas").attr(

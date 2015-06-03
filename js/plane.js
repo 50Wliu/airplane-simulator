@@ -66,7 +66,7 @@ Plane.prototype.render = function(){
     bindThis.camera.position.x = x;
     bindThis.camera.lookAt(new THREE.Vector3(x,y+4,z));
     graphManager.drawOnGraph("position", temp, bindThis.z);
-    graphManager.drawOnGraph("velocity", temp, bindThis.speedz*10);
+    //graphManager.drawOnGraph("velocity", temp, bindThis.speedz*10);
     temp++;
   }, 1000/60);
 }

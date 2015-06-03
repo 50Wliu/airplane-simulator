@@ -21,8 +21,8 @@ function startGame(nickname)
 
 	graphManager = new GraphManager("graph");
 	graphManager.addGraph("position");
-	graphManager.addGraph("velocity");
-	graphManager.addGraph("acceleration");
+	//graphManager.addGraph("velocity");
+	// graphManager.addGraph("acceleration");
 
 	loadPlane("F-35_Lightning", nickname);
 }

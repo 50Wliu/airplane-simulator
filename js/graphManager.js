@@ -2,7 +2,7 @@ function GraphManager(canvasOverlay){
   $("#" + canvasOverlay).show();
   this.canvasOverlay = document.getElementById(canvasOverlay);
   this.canvas = document.getElementById(canvasOverlay.substr(0, canvasOverlay.search('-')));
-  $("#" + this.canvas).show();
+  $("#" + canvasOverlay.substr(0, canvasOverlay.search('-'))).show();
   this.canvas.width = 300;
   this.canvas.height = $(document).height();
   this.context = this.canvas.getContext("2d");

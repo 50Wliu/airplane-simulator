@@ -19,10 +19,10 @@ function startGame(nickname)
 	var light = new THREE.AmbientLight(0xffffff, 1);
 	scene.add(light);
 
-	graphManager = new GraphManager("graph");
+	graphManager = new GraphManager("graph-overlay");
 	graphManager.addGraph("position");
 	//graphManager.addGraph("velocity");
-	// graphManager.addGraph("acceleration");
+	//graphManager.addGraph("acceleration");
 
 	loadPlane("F-35_Lightning", nickname);
 }

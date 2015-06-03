@@ -90,11 +90,16 @@ a:hover, a:focus
     cursor: pointer;
 }
 
-#graph
+#graph, #graph-overlay
 {
     display: none;
     position: absolute;
     right: 0;
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 1;
+}
+
+#graph-overlay
+{
+  background-color: rgba(0, 0, 0, 0.0);
 }

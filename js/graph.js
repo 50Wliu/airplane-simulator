@@ -1,32 +1,30 @@
-function Graph(graphName, context, canvas, x, y){
+function Graph(graphName, context, canvas, canvasOverlay, x, y){
   this.x = x;
   this.y = y;
   this.vart = x;
-  this.vary = y+50;
+  this.vary = y + 50;
   this.context = context;
-  this.graphName = graphName;
+  var contextOverlay = canvasOverlay.getContext("2d");
   this.canvas = canvas;
-  context.beginPath();
-  context.setLineDash([1,0]);
-  context.rect(x, y, canvas.width - 20, 100);
-  context.lineWidth = 1;
-  context.strokeStyle = 'black';
-  context.stroke();
-  context.setLineDash([2]);
-  context.moveTo(10, y + 50);
-  context.lineTo(canvas.width - 10, y + 50);
-  context.stroke();
-  context.font = "24px serif";
-  context.fillText(graphName, 10, y + 115+5);
+  contextOverlay.beginPath();
+  contextOverlay.setLineDash([1,0]);
+  contextOverlay.rect(x, y, canvasOverlay.width - 20, 100);
+  contextOverlay.lineWidth = 1;
+  contextOverlay.strokeStyle = 'black';
+  contextOverlay.stroke();
+  contextOverlay.setLineDash([2]);
+  contextOverlay.moveTo(10, y + 50);
+  contextOverlay.lineTo(canvasOverlay.width - 10, y + 50);
+  contextOverlay.stroke();
+  contextOverlay.font = "24px serif";
+  contextOverlay.fillText(graphName, 10, y + 115 + 5);
 }
 
-Graph.prototype.drawDot = function(nt, ny){
-  var context = this.context;
-  var imageData = context.getImageData(this.x+1, this.y, this.canvas.width-20, 49);
-  var imageData2 = context.getImageData(this.x+1, this.y + 51, this.canvas.width-20, 49);
-  context.putImageData(imageData, this.x, this.y);
-  context.putImageData(imageData2, this.x, this.y+51);
-  context.clearRect(context.canvas.width-20, this.y, 1, 100);
-  context.fillRect(this.vart + 50, this.vary+ny, 1,1);
-  context.stroke();
-}
+Graph.prototype.drawDot = function(nt, ny)
+{
+  var imageData = this.context.getImageData(this.x, this.y, this.canvas.width-20, 100);
+  this.context.putImageData(imageData, this.x, this.y);
+  this.context.clearRect(context.canvas.width-20, this.y, 1, 100);  //Clear the last pixel
+  this.context.fillRect(this.vart + 50, this.vary+ny, 1,1);
+  this.context.stroke();
+};

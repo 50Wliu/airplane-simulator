@@ -52,7 +52,7 @@ function GetRandomColor()  //Temporary until the HUD actually does something
 	return color;
 }
 
-$(window).resize(function()
+$(window).resize(function()  //TODO: Extract all of this out to resize.js
 {
 	$("#hud").css(
 	{
@@ -69,6 +69,11 @@ $(window).resize(function()
 	}
 
 	$("#canvas").attr(
+	{
+		width: $(window).innerWidth()+"px", height: $(window).innerHeight()-document.getElementById("hud").clientHeight+"px"
+	});
+
+  $("#game").attr(
 	{
 		width: $(window).innerWidth()+"px", height: $(window).innerHeight()-document.getElementById("hud").clientHeight+"px"
 	}).css(  //Only needed because three.js forces CSS onto the canvas element which overrides the above values

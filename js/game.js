@@ -9,6 +9,7 @@ function startGame(nickname)
 	$("#hud").show();
 
 	renderer = new THREE.WebGLRenderer();
+	renderer.domElement.setAttribute("id", "game");
 	renderer.setSize(window.innerWidth, window.innerHeight-$("#hud").innerHeight());
 	renderer.setClearColor(0xadd8e6);
 

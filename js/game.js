@@ -24,11 +24,11 @@ function startGame(nickname)
 	graphManager.addGraph("position");
 	graphManager.addGraph("velocity");
 	graphManager.addGraph("acceleration");
-
-	loadPlane("F-35_Lightning", nickname);
+	window.backend.startGame(nickname);
+	//loadPlane("F-35_Lightning", nickname);
 }
 
-function loadPlane(model, nickname)
+function loadPlane(model, nickname, posX, posY, posZ)
 {
 	var dae;
 	var loader = new THREE.ColladaLoader();
@@ -39,7 +39,7 @@ function loadPlane(model, nickname)
 		dae.scale.x=dae.scale.y=dae.scale.z=1;
 		dae.rotation.x=Math.PI;
 		dae.updateMatrix();
-		plane = new Plane(0, 10, 20, dae, 4 /*rotation not used right now*/, 0.05, nickname);
+		plane = new Plane(posX, posY, posZ, dae, 4 /*rotation not used right now*/, 0.05, nickname);
 		plane.draw();
 		plane.render();
   });

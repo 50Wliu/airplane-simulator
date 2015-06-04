@@ -1,6 +1,7 @@
-window.Frontend = {
-  loadPlanes:function(model, nickname, posX, posY, posZ){
-    console.log(model+ " "+ nickname + " " + posX);
-    loadPlane(model, nickname, posX, posY, posZ);
-  }
-}
+var socket = io();
+socket.on('connect', function(){
+  socket.emit('adduser', nickname);
+});
+socket.on('alertConnect', function(username){
+  alert("Hello " + username + "! Welcome to the game!");
+});

@@ -6,9 +6,9 @@ function GraphManager(canvasOverlay)
     this.canvas = document.getElementById(canvasOverlay.substr(0, canvasOverlay.search('-')));
     $("#" + canvasOverlay.substr(0, canvasOverlay.search('-'))).show();
     this.canvas.width = 300;
-    this.canvas.height = $(window).innerHeight();
+    this.canvas.height = $(window).innerHeight() - document.getElementById("hud").clientHeight;
     this.canvasOverlay.width = 300;
-    this.canvasOverlay.height = $(window).innerHeight();
+    this.canvasOverlay.height = $(window).innerHeight() - document.getElementById("hud").clientHeight;
     this.context = this.canvas.getContext("2d");
     this.graphs = {};
 }

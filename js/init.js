@@ -75,4 +75,9 @@ $(window).resize(function()
 	{
 		width: $(window).innerWidth()+"px", height: $(window).innerHeight()-document.getElementById("hud").clientHeight+"px"
 	});
+
+  $("#graph").attr(
+  {
+    height: $(window).innerHeight()-document.getElementById("hud").clientHeight+"px"
+  });
 });

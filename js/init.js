@@ -1,4 +1,5 @@
 "use strict";
+window.backend = new Backend(window.Frontend);
 var canvas, context, floatingManager;
 $(window).ready(function()
 {

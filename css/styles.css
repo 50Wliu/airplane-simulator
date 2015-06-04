@@ -101,5 +101,5 @@ a:hover, a:focus
 
 #graph-overlay
 {
-  background-color: rgba(0, 0, 0, 0.0);
+  background-color: transparent;
 }

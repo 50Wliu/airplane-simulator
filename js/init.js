@@ -80,4 +80,9 @@ $(window).resize(function()
   {
     height: $(window).innerHeight()-document.getElementById("hud").clientHeight+"px"
   });
+
+  $("#graph-overlay").attr(
+  {
+    height: $(window).innerHeight()-document.getElementById("hud").clientHeight+"px"
+  });
 });

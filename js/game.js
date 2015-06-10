@@ -1,14 +1,18 @@
 "use strict";
 
 var scene, renderer, graphManager;
-function startGame(nickname)
+var cPlanes = {};
+var nickname;
+function startGame(name)
 {
+	nickname = name;
 	floatingManager.stop();
 	$("#overlays").remove();
 	$("#canvas").remove();
 	$("#hud").show();
 
 	renderer = new THREE.WebGLRenderer();
+	renderer.domElement.setAttribute("id", "game");
 	renderer.setSize(window.innerWidth, window.innerHeight-$("#hud").innerHeight());
 	renderer.setClearColor(0xadd8e6);
 
@@ -18,16 +22,23 @@ function startGame(nickname)
 
 	var light = new THREE.AmbientLight(0xffffff, 1);
 	scene.add(light);
+	window.backend.startGame(nickname);
 
-	graphManager = new GraphManager("graph");
+	graphManager = new GraphManager("graph-overlay");
 	graphManager.addGraph("position");
-	//graphManager.addGraph("velocity");
-	// graphManager.addGraph("acceleration");
+	graphManager.addGraph("velocity");
+	graphManager.addGraph("acceleration");
 
-	loadPlane("F-35_Lightning", nickname);
+	//loadPlane("F-35_Lightning", nickname, 0,10,20);
 }
 
-function loadPlane(model, nickname)
+function render(){
+	//console.log(cPlanes[nickname].dae);
+	renderer.render(scene, cPlanes[nickname].camera);
+	requestAnimationFrame(render);
+}
+
+function loadPlane(model, nickname, posX, posY, posZ)
 {
 	var dae;
 	var loader = new THREE.ColladaLoader();
@@ -38,8 +49,12 @@ function loadPlane(model, nickname)
 		dae.scale.x=dae.scale.y=dae.scale.z=1;
 		dae.rotation.x=Math.PI;
 		dae.updateMatrix();
-		plane = new Plane(0, 10, 20, dae, 4 /*rotation not used right now*/, 0.05, nickname);
-		plane.draw();
-		plane.render();
+		plane = new Plane(posX, posY, posZ, dae, 4 /*rotation not used right now*/, 0.05, nickname);
+		if(cPlanes[nickname] == undefined){
+			cPlanes[nickname] = plane;
+			cPlanes[nickname].draw();
+			cPlanes[nickname].render();
+		}
+		render();
   });
 }

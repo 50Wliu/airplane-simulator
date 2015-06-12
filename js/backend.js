@@ -89,6 +89,7 @@ function nconc(arr) {
 };
 window.Backend = function (frontend) {
     this.frontend = frontend;
+    this.clientFunctions.frontend = frontend;
     var _js11 = this.availableBackends;
     var _js13 = _js11.length;
     for (var _js12 = 0; _js12 < _js13; _js12 += 1) {
@@ -158,7 +159,7 @@ window.Backend.prototype = { commandQueue : [],
 },
                           clientFunctions : { 'loadPlanes' : function (g1198) {
     return (function (model, nickname, posX, posY, posZ) {
-        return this.frontend[loadPlanes(model, nickname, posX, posY, posZ)];
+        return this.frontend.loadPlanes(model, nickname, posX, posY, posZ);
     }).call(this, g1198.model, g1198.nickname, g1198.posX, g1198.posY, g1198.posZ);
 },
                                               'setId' : function (g1199) {

@@ -20,7 +20,14 @@ function startGame(name)
 
 	scene = new THREE.Scene();
 	var cube = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
-	scene.add(cube);
+	for(var i = 0; i < 10; i++){
+	    for(var j = 0; i < 10; i++){
+	    	cube.position.x = i*11;
+	    	cube.position.z = i*11;
+		scene.add(cube);
+	    }
+	}
+	
 
 	var light = new THREE.AmbientLight(0xffffff, 1);
 	scene.add(light);

@@ -102,7 +102,7 @@ window.Backend.prototype = { commandQueue : [],
         this.backendInstance = backendInstance;
         var self = this;
         var setupSocket = function () {
-            self.socket = new WebSocket('ws://test-airplane.rhcloud.com:8000/gamesocket');
+            self.socket = new WebSocket('wss://test-airplane.rhcloud.com:8443/gamesocket');
             self.socket.onmessage = function (msg) {
                 if (msg.data === 'test-response') {
                     backendInstance.activateBackend(self);

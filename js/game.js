@@ -19,9 +19,9 @@ function startGame(name)
 	renderer.setClearColor(0xadd8e6);
 
 	scene = new THREE.Scene();
-	var cube = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
 	for(var i = 0; i < 10; i++){
 	    for(var j = 0; i < 10; i++){
+	    	var cube = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
 	    	cube.position.x = i*11;
 	    	cube.position.z = i*11;
 		scene.add(cube);

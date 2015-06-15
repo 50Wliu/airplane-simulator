@@ -19,24 +19,32 @@ function startGame(name)
 	renderer.setClearColor(0xadd8e6);
 
 	scene = new THREE.Scene();
-    	var cube1 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
-    	cube1.position.x = 0;
-    	cube1.position.z = 0;
-	scene.add(cube1);
-	var cube2 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
-    	cube2.position.x = 0;
-    	cube2.position.z = 50;
-	scene.add(cube2);
-	var cube3 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
-    	cube3.position.x = 50;
-    	cube3.position.z = 0;
-	scene.add(cube3);
-	var cube4 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
-    	cube4.position.x = 50;
-    	cube4.position.z = 50;
-	scene.add(cube4);
-	
+	var loader1 = new THREE.ColladaLoader();
+	for(var i = 0; i < 2; i++){
+		for(var j = 0; j < 2; j ++){
+			for(var k = 0; k < 2; k++){
+				// var cube = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
+				// cube.position.x = i * 30;
+				// cube.position.y = j * 30;
+				// cube.position.z = k * 30;
+				// scene.add(cube);
 
+				loader1.load("models/cloud.dae", function(collada)
+				{
+					var dae = collada.scene;
+					dae.scale.x=dae.scale.y=dae.scale.z=1;
+					dae.updateMatrix();
+					dae.position.x = Math.random()*50;
+					dae.position.y = Math.random()*50;
+					dae.position.z = Math.random()*50;
+					scene.add(dae);
+				});
+			}
+		}
+	}
+
+
+	debugaxis(100);
 	var light = new THREE.AmbientLight(0xffffff, 1);
 	scene.add(light);
 	window.backend.joinGame(nickname);
@@ -51,16 +59,16 @@ function startGame(name)
 
 		} else if(e.keyCode == 40){
 			cPlanes[window.backend.id].move("z", -1);
-		} else if(e.keyCode == 37){
+		} else if(e.keyCode == 65){
 			//cPlanes[window.backend.id].move("x", -1);
-			cPlanes[window.backend.id].setRotation(Math.PI,cPlanes[window.backend.id].dae.rotation.y-Math.PI/32,0);
-		} else if(e.keyCode == 39){
+			cPlanes[window.backend.id].setRotation(cPlanes[window.backend.id].dae.rotation.x,cPlanes[window.backend.id].dae.rotation.y-Math.PI/32,0);
+		} else if(e.keyCode == 68){
 			//cPlanes[window.backend.id].move("x", 1);
-			cPlanes[window.backend.id].setRotation(Math.PI,cPlanes[window.backend.id].dae.rotation.y+Math.PI/32,0);
+			cPlanes[window.backend.id].setRotation(cPlanes[window.backend.id].dae.rotation.x,cPlanes[window.backend.id].dae.rotation.y+Math.PI/32,0);
 		} else if(e.keyCode == 87){
-			cPlanes[window.backend.id].move("y", 1);
+			cPlanes[window.backend.id].setRotation(cPlanes[window.backend.id].dae.rotation.x+Math.PI/32,cPlanes[window.backend.id].dae.rotation.y,cPlanes[window.backend.id].dae.rotation.z);
 		} else if(e.keyCode == 83){
-			cPlanes[window.backend.id].move("y", -1);
+			cPlanes[window.backend.id].setRotation(cPlanes[window.backend.id].dae.rotation.x-Math.PI/32,cPlanes[window.backend.id].dae.rotation.y,cPlanes[window.backend.id].dae.rotation.z);
 		}
 		if(e.keyCode == 32){
 			cPlanes[window.backend.id].shoot();
@@ -95,7 +103,7 @@ function loadPlane(uuid, nickname, model, posX, posY, posZ)
 		dae.updateMatrix();
 		if(uuid == window.backend.id){
 			render();
-			dae.visible = false;
+			//dae.visible = false;
 		}
 		plane = new Plane(posX, posY, posZ, dae, 4 /*rotation not used right now*/, 0.05, nickname);
 		if(cPlanes[uuid] == undefined){
@@ -105,3 +113,23 @@ function loadPlane(uuid, nickname, model, posX, posY, posZ)
 		}
   });
 }
+
+var debugaxis = function(axisLength){
+    //Shorten the vertex function
+    function v(x,y,z){
+            return new THREE.Vector3(x,y,z);
+    }
+
+    //Create axis (point1, point2, colour)
+    function createAxis(p1, p2, color){
+            var line, lineGeometry = new THREE.Geometry(),
+            lineMat = new THREE.LineBasicMaterial({color: color, lineWidth: 1});
+            lineGeometry.vertices.push(p1, p2);
+            line = new THREE.Line(lineGeometry, lineMat);
+            scene.add(line);
+    }
+
+    createAxis(v(-axisLength, 0, 0), v(axisLength, 0, 0), 0xFF0000);
+    createAxis(v(0, -axisLength, 0), v(0, axisLength, 0), 0x00FF00);
+    createAxis(v(0, 0, -axisLength), v(0, 0, axisLength), 0x0000FF);
+};

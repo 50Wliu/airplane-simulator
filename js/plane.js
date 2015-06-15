@@ -14,6 +14,13 @@ function Plane(x, y, z, dae, rotation, acceleration, name){
   this.dae.position.y = this.y;
   this.dae.position.z = this.z;
   this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+  this.camera.rotation.y = Math.PI;
+  this.camera.rotation.z = Math.PI;
+  this.camera.rotation.x = -Math.PI/10;
+  this.camera.position.set(0,-10,-15);
+  //this.camera.lookAt(new THREE.Vector3(0,0,0));
+  this.dae.add(this.camera);
+
   this.name = name;
   var bindThis = this;
   $("body").append(renderer.domElement);
@@ -45,10 +52,13 @@ Plane.prototype.render = function(){
     bindThis.x = bindThis.dae.position.x;
     bindThis.y = bindThis.dae.position.y;
     bindThis.z = bindThis.dae.position.z;
-    bindThis.camera.position.z = z;
-    bindThis.camera.position.y = y;
-    bindThis.camera.position.x = x;
-    bindThis.camera.rotation.y = -bindThis.dae.rotation.y;
+    // bindThis.camera.position.z = z+20;
+    // bindThis.camera.position.y = y+10;
+    // bindThis.camera.position.x = x;
+    // bindThis.camera.position.z = z + 20*Math.sin(bindThis.dae.rotation.z)*Math.cos(bindThis.dae.rotation.y);
+    // bindThis.camera.position.y = y + 10*Math.cos(bindThis.dae.rotation.z);
+    // bindThis.camera.position.x = x + Math.sin(bindThis.dae.rotation.z)*Math.sin(bindThis.dae.rotation.y);
+    // console.log(20*Math.sin(bindThis.dae.rotation.z)*Math.cos(bindThis.dae.rotation.y));
     //bindThis.camera.lookAt(new THREE.Vector3(x,y+4,z));
     requestAnimationFrame(bindThis.render.bind(bindThis));
   }, 1000/60);
@@ -59,23 +69,6 @@ Plane.prototype.move = function(axis, dir){
   var accX = Math.sin(this.dae.rotation.y)*this.acceleration;
   this.speedx -= accX;
   this.speedz -= accZ;
-  // switch(axis){
-  //   case "x":
-  //     this.speedx -= dir * this.acceleration;
-  //     if(Math.abs(this.dae.rotation.z) <= Math.PI/4){
-  //       this.dae.rotation.z += dir * 0.05;
-  //     }
-  //     break;
-  //   case "y":
-  //     this.speedy += dir * this.acceleration;
-  //     if(Math.abs(this.dae.rotation.x - Math.PI) <= Math.PI/5 ){
-  //       this.dae.rotation.x += dir * 0.05;
-  //     }
-  //   break;
-  //   case "z":
-  //     this.speedz -= dir * this.acceleration;
-  //     break;
-  // }
 }
 
 Plane.prototype.shoot = function(){

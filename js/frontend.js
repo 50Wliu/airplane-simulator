@@ -1,7 +1,6 @@
 window.Frontend = {
-  loadPlanes:function(model, nickname, posX, posY, posZ){
-    console.log(model+ " "+ nickname + " " + posX);
-    loadPlane(model, nickname, posX, posY, posZ);
+  loadPlanes:function(uuid, model, nickname, posX, posY, posZ){
+    loadPlane(uuid, model, nickname, posX, posY, posZ);
   },
   setPlaneProperties:function(id, posX, posY, posZ){
     cPlanes[id].dae.position.x = posX;

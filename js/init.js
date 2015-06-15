@@ -1,5 +1,9 @@
 "use strict";
 window.backend = new Backend(window.Frontend);
+window.onbeforeunload = function(){
+	window.backend.disconnect();
+	return "Plz don't leave us :(";
+}
 var canvas, context, floatingManager;
 $(window).ready(function()
 {
@@ -35,6 +39,8 @@ $(window).ready(function()
 	floatingManager.createObject("images/menu_airplane.png", 4);
 	floatingManager.move();
 	//startGame("t");
+
+
 });
 
 function GetRandomColor()  //Temporary until the HUD actually does something

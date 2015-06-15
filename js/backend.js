@@ -89,7 +89,6 @@ function nconc(arr) {
 };
 window.Backend = function (frontend) {
     this.frontend = frontend;
-    this.clientFunctions.frontend = frontend;
     var _js11 = this.availableBackends;
     var _js13 = _js11.length;
     for (var _js12 = 0; _js12 < _js13; _js12 += 1) {
@@ -103,7 +102,7 @@ window.Backend.prototype = { commandQueue : [],
         this.backendInstance = backendInstance;
         var self = this;
         var setupSocket = function () {
-            self.socket = new WebSocket('wss://test-airplane.rhcloud.com:8443/gamesocket');
+            self.socket = new WebSocket('ws://test-airplane.rhcloud.com:8000/gamesocket');
             self.socket.onmessage = function (msg) {
                 if (msg.data === 'test-response') {
                     backendInstance.activateBackend(self);
@@ -139,7 +138,7 @@ window.Backend.prototype = { commandQueue : [],
                           runFunctions : function (functionForm) {
     for (var fun in functionForm) {
         var arguments = functionForm[fun];
-        this.clientFunctions[fun](arguments);
+        this.clientFunctions[fun](this, arguments);
     };
 },
                           activateBackend : function (backend) {
@@ -155,31 +154,37 @@ window.Backend.prototype = { commandQueue : [],
     return this.activeBackend = null;
 },
                           initConnection : function () {
-    return this.id ? this.resume(id) : this.init();
+    return this.id ? this.resume(this.id) : this.init();
 },
-                          clientFunctions : { 'loadPlanes' : function (g1198) {
-    return (function (model, nickname, posX, posY, posZ) {
-        return this.frontend.loadPlanes(model, nickname, posX, posY, posZ);
-    }).call(this, g1198.model, g1198.nickname, g1198.posX, g1198.posY, g1198.posZ);
+                          clientFunctions : { 'loadPlanes' : function (g1357, g1358) {
+    return (function (uuid, nickname, model, posX, posY, posZ) {
+        return this.frontend.loadPlanes(uuid, nickname, model, posX, posY, posZ);
+    }).call(g1357, g1358.uuid, g1358.nickname, g1358.model, g1358.posX, g1358.posY, g1358.posZ);
 },
-                                              'setId' : function (g1199) {
+                                              'setId' : function (g1359, g1360) {
     return (function (id) {
-        return self.id = id;
-    }).call(this, g1199.id);
+        return this.id = id;
+    }).call(g1359, g1360.id);
 },
-                                              'handleError' : function (g1200) {
+                                              'handleError' : function (g1361, g1362) {
     return (function (message) {
         return console.log('Server-side error: ' + message);
-    }).call(this, g1200.message);
+    }).call(g1361, g1362.message);
 }
                                             }
                         };
-window.Backend.prototype['startGame'] = function (nickname) {
-    return this.sendCommand({ 'startGame' : { 'nickname' : nickname } });
+window.Backend.prototype['joinGame'] = function (nickname) {
+    return this.sendCommand({ 'joinGame' : { 'nickname' : nickname } });
+};
+window.Backend.prototype['disconnect'] = function () {
+    return this.sendCommand({ 'disconnect' : {  } });
 };
 window.Backend.prototype['init'] = function () {
     return this.sendCommand({ 'init' : {  } });
 };
 window.Backend.prototype['resume'] = function (id) {
     return this.sendCommand({ 'resume' : { 'id' : id } });
+};
+window.Backend.prototype['disconnect'] = function () {
+    return this.sendCommand({ 'disconnect' : {  } });
 };

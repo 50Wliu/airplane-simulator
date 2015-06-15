@@ -19,14 +19,22 @@ function startGame(name)
 	renderer.setClearColor(0xadd8e6);
 
 	scene = new THREE.Scene();
-	for(var i = 0; i < 10; i++){
-	    for(var j = 0; i < 10; i++){
-	    	var cube = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
-	    	cube.position.x = i*11;
-	    	cube.position.z = i*11;
-		scene.add(cube);
-	    }
-	}
+    	var cube1 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
+    	cube1.position.x = 0;
+    	cube1.position.z = 0;
+	scene.add(cube1);
+	var cube2 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
+    	cube2.position.x = 0;
+    	cube2.position.z = 50;
+	scene.add(cube2);
+	var cube3 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
+    	cube3.position.x = 50;
+    	cube3.position.z = 0;
+	scene.add(cube3);
+	var cube4 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
+    	cube4.position.x = 50;
+    	cube4.position.z = 50;
+	scene.add(cube4);
 	
 
 	var light = new THREE.AmbientLight(0xffffff, 1);

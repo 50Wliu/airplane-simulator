@@ -1,9 +1,10 @@
 "use strict";
 window.backend = new Backend(window.Frontend);
-window.onbeforeunload = function(){
+window.onbeforeunload = function()
+{
 	window.backend.disconnect();
-	return "Plz don't leave us :(";
 }
+
 var canvas, context, floatingManager;
 $(window).ready(function()
 {

@@ -75,7 +75,9 @@ Plane.prototype.move = function()
 	}
 	else
 	{
-	  this.setSpeed(0, this.speedY, 0);
+	  //this.setSpeed(0, this.speedY, 0);
+	  this.speedx = 0;
+	  this.speedZ = 0;
 	}
 
 	if(keys[65] || keys[37])  //A or left arrow

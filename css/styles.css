@@ -39,12 +39,12 @@ a:hover, a:focus
 
 .btn-group.play
 {
-    width: 86%;
+    width: 100%;
 }
 
 .btn-play
 {
-    width: 90%;
+    width: 92%;  /* Was 90% */
 }
 
 .dropdown-menu
@@ -54,11 +54,11 @@ a:hover, a:focus
     text-align: right;
 }
 
-.settings
+/*.settings
 {
     display: none;
     margin: 6px;
-}
+}*/
 
 .menu-private
 {

@@ -23,22 +23,22 @@ function startGame(name)
 	for(var i = 0; i < 2; i++){
 		for(var j = 0; j < 2; j ++){
 			for(var k = 0; k < 2; k++){
-				// var cube = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
-				// cube.position.x = i * 30;
-				// cube.position.y = j * 30;
-				// cube.position.z = k * 30;
-				// scene.add(cube);
+				var cube = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshNormalMaterial());
+				cube.position.x = i * 30;
+				cube.position.y = j * 30;
+				cube.position.z = k * 30;
+				scene.add(cube);
 
-				loader1.load("models/cloud.dae", function(collada)
-				{
-					var dae = collada.scene;
-					dae.scale.x=dae.scale.y=dae.scale.z=1;
-					dae.updateMatrix();
-					dae.position.x = Math.random()*50;
-					dae.position.y = Math.random()*50;
-					dae.position.z = Math.random()*50;
-					scene.add(dae);
-				});
+				// loader1.load("models/cloud.dae", function(collada)
+				// {
+				// 	var dae = collada.scene;
+				// 	dae.scale.x=dae.scale.y=dae.scale.z=1;
+				// 	dae.updateMatrix();
+				// 	dae.position.x = Math.random()*50;
+				// 	dae.position.y = Math.random()*50;
+				// 	dae.position.z = Math.random()*50;
+				// 	scene.add(dae);
+				// });
 			}
 		}
 	}

@@ -28,7 +28,7 @@ function Plane(x, y, z, dae, rotation, acceleration, name){
 
 Plane.prototype.draw = function(){
   scene.add(this.dae);
-};
+}
 var temp = 10;
 Plane.prototype.graphDraw = function(){
   if(temp < context.canvas.width - 10 - 10){
@@ -37,7 +37,7 @@ Plane.prototype.graphDraw = function(){
   graphManager.drawOnGraph("position", temp, this.z);
   graphManager.drawOnGraph("velocity", temp, this.speedz*10);
   graphManager.drawOnGraph("acceleration", temp, this.speedz > 0 ? 1 * 10 : !this.speedz ? 0 : -1 * 10);
-};
+}
 
 Plane.prototype.render = function(){
   var bindThis = this;
@@ -62,75 +62,27 @@ Plane.prototype.render = function(){
     //bindThis.camera.lookAt(new THREE.Vector3(x,y+4,z));
     requestAnimationFrame(bindThis.render.bind(bindThis));
   }, 1000/60);
-};
+}
 
-Plane.prototype.move = function()
-{
-  if(keys[38])  //Up arrow
-  {
-		var accZ = Math.cos(this.dae.rotation.y)*this.acceleration;
-    var accX = Math.sin(this.dae.rotation.y)*this.acceleration;
-    this.speedx -= accX;
-    this.speedz -= accZ;
-	}
-	else
-	{
-	  //this.setSpeed(0, this.speedy, 0);
-	  this.speedx = 0;
-	  this.speedz = 0;
-	}
-
-	if(keys[65] || keys[37])  //A or left arrow
-	{
-		this.setRotation(this.dae.rotation.x, this.dae.rotation.y-Math.PI/32, 0);
-	}
-	else
-	{
-	  this.setRotation(this.dae.rotation.x, this.dae.rotation.y, 0);
-	}
-
-	if(keys[68] || keys[39])  //D or right arrow
-	{
-		this.setRotation(this.dae.rotation.x, this.dae.rotation.y+Math.PI/32, 0);
-	}
-	else
-	{
-	  this.setRotation(this.dae.rotation.x, this.dae.rotation.y, 0);
-	}
-
-	if(keys[87])  //W
-	{
-		this.setRotation(this.dae.rotation.x+Math.PI/32, this.dae.rotation.y, this.dae.rotation.z);
-	}
-	else
-	{
-	  this.setRotation(this.dae.rotation.x, this.dae.rotation.y, this.dae.rotation.z);
-	}
-
-	if(keys[83])  //S
-	{
-		this.setRotation(this.dae.rotation.x-Math.PI/32, this.dae.rotation.y, this.dae.rotation.z);
-	}
-	else
-	{
-	  this.setRotation(this.dae.rotation.x, this.dae.rotation.y, this.dae.rotation.z);
-	}
-
-  setTimeout(this.move, 10);
-};
+Plane.prototype.move = function(axis, dir){
+  var accZ = Math.cos(this.dae.rotation.y)*this.acceleration;
+  var accX = Math.sin(this.dae.rotation.y)*this.acceleration;
+  this.speedx -= accX;
+  this.speedz -= accZ;
+}
 
 Plane.prototype.shoot = function(){
   var bullet = new Bullet(this.x,this.y,this.z);
-};
+}
 
 Plane.prototype.setSpeed = function(val1,val2,val3){
   this.speedx = val1;
   this.speedy = val2;
   this.speedz = val3;
-};
+}
 
 Plane.prototype.setRotation = function(val1,val2,val3){
   this.dae.rotation.x = val1;
   this.dae.rotation.y = val2;
   this.dae.rotation.z = val3;
-};
+}

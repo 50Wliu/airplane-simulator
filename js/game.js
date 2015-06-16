@@ -53,31 +53,31 @@ function startGame(name)
 	graphManager.addGraph("velocity");
 	graphManager.addGraph("acceleration");
 
-// 	document.addEventListener("keydown", function(e){
-// 		if(e.keyCode == 38){
-// 			cPlanes[window.backend.id].move("z", 1);
+	document.addEventListener("keydown", function(e){
+		if(e.keyCode == 38){
+			cPlanes[window.backend.id].move("z", 1);
 
-// 		} else if(e.keyCode == 40){
-// 			cPlanes[window.backend.id].move("z", -1);
-// 		} else if(e.keyCode == 65){
-// 			//cPlanes[window.backend.id].move("x", -1);
-// 			cPlanes[window.backend.id].setRotation(cPlanes[window.backend.id].dae.rotation.x,cPlanes[window.backend.id].dae.rotation.y-Math.PI/32,0);
-// 		} else if(e.keyCode == 68){
-// 			//cPlanes[window.backend.id].move("x", 1);
-// 			cPlanes[window.backend.id].setRotation(cPlanes[window.backend.id].dae.rotation.x,cPlanes[window.backend.id].dae.rotation.y+Math.PI/32,0);
-// 		} else if(e.keyCode == 87){
-// 			cPlanes[window.backend.id].setRotation(cPlanes[window.backend.id].dae.rotation.x+Math.PI/32,cPlanes[window.backend.id].dae.rotation.y,cPlanes[window.backend.id].dae.rotation.z);
-// 		} else if(e.keyCode == 83){
-// 			cPlanes[window.backendd.id].setRotation(cPlanes[window.backend.id].dae.rotation.x-Math.PI/32,cPlanes[window.backend.id].dae.rotation.y,cPlanes[window.backend.id].dae.rotation.z);
-// 		}
-// 		if(e.keyCode == 32){
-// 			cPlanes[window.backend.id].shoot();
-// 		}
-// 	});
-// 	document.addEventListener("keyup", function(e){
-// 		cPlanes[window.backend.id].setSpeed(0,0,0);
-// 		//cPlanes[window.backend.id].setRotation(Math.PI,0,0);
-// 	});
+		} else if(e.keyCode == 40){
+			cPlanes[window.backend.id].move("z", -1);
+		} else if(e.keyCode == 65){
+			//cPlanes[window.backend.id].move("x", -1);
+			cPlanes[window.backend.id].setRotation(cPlanes[window.backend.id].dae.rotation.x,cPlanes[window.backend.id].dae.rotation.y-Math.PI/32,0);
+		} else if(e.keyCode == 68){
+			//cPlanes[window.backend.id].move("x", 1);
+			cPlanes[window.backend.id].setRotation(cPlanes[window.backend.id].dae.rotation.x,cPlanes[window.backend.id].dae.rotation.y+Math.PI/32,0);
+		} else if(e.keyCode == 87){
+			cPlanes[window.backend.id].setRotation(cPlanes[window.backend.id].dae.rotation.x+Math.PI/32,cPlanes[window.backend.id].dae.rotation.y,cPlanes[window.backend.id].dae.rotation.z);
+		} else if(e.keyCode == 83){
+			cPlanes[window.backend.id].setRotation(cPlanes[window.backend.id].dae.rotation.x-Math.PI/32,cPlanes[window.backend.id].dae.rotation.y,cPlanes[window.backend.id].dae.rotation.z);
+		}
+		if(e.keyCode == 32){
+			cPlanes[window.backend.id].shoot();
+		}
+	});
+	document.addEventListener("keyup", function(e){
+		cPlanes[window.backend.id].setSpeed(0,0,0);
+		//cPlanes[window.backend.id].setRotation(Math.PI,0,0);
+	});
 
 
 }
@@ -110,7 +110,6 @@ function loadPlane(uuid, nickname, model, posX, posY, posZ)
 			cPlanes[uuid] = plane;
 			cPlanes[uuid].draw();
 			cPlanes[uuid].render();
-			cPlanes[uuid].move();
 		}
   });
 }
@@ -134,18 +133,3 @@ var debugaxis = function(axisLength){
     createAxis(v(0, -axisLength, 0), v(0, axisLength, 0), 0x00FF00);
     createAxis(v(0, 0, -axisLength), v(0, 0, axisLength), 0x0000FF);
 };
-
-var keys = [];
-document.addEventListener("keydown", function(event)
-{
-  keys[event.keyCode] = true;
-  if(event.keyCode === 32)  //Space
-  {
-    cPlanes[window.backend.id].shoot();
-  }
-});
-
-document.addEventListener("keyup", function(event)
-{
-  keys[event.keyCode] = false;
-});

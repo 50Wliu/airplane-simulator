@@ -113,6 +113,8 @@ Plane.prototype.move = function()
 	{
 	  this.setRotation(this.dae.rotation.x, this.dae.rotation.y, this.dae.rotation.z);
 	}
+
+  setTimeout(this.move, 10);
 };
 
 Plane.prototype.shoot = function(){
